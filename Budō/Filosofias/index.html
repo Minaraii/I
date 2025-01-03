@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filosofías de Artes Marciales</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Filosofías de Artes Marciales</h1>
+        <nav>
+            <ul>
+                <li><a href="#artes-internas">Artes Internas</a></li>
+                <li><a href="#artes-externas">Artes Externas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="artes-internas">
+            <h2>Artes Internas</h2>
+            <p>Las artes internas se centran en el control de la energía vital y la armonía entre cuerpo y mente.</p>
+            <ul>
+                <li><strong>Tai Chi Chuan</strong>: Movimiento lento y controlado, enfatizando el equilibrio.</li>
+                <li><strong>Qi Gong</strong>: Ejercicios de respiración y meditación para equilibrar el Qi.</li>
+                <li><strong>Aikido</strong>: Defensa basada en redirigir la energía del oponente.</li>
+            </ul>
+            <button onclick="mostrarDetalles('artes_internas')">Leer más sobre Artes Internas</button>
+            <div id="artes_internas" class="hidden">
+                <p>El Taoísmo es la base filosófica de muchas artes internas. La energía vital, llamada Qi, fluye a través de los meridianos del cuerpo...</p>
+            </div>
+        </section>
+        <section id="artes-externas">
+            <h2>Artes Externas</h2>
+            <p>Las artes externas se enfocan en el desarrollo físico y en técnicas de combate.</p>
+            <ul>
+                <li><strong>Kung Fu</strong>: Técnicas rápidas y ágiles.</li>
+                <li><strong>Karate</strong>: Golpes y patadas rápidas y precisas.</li>
+                <li><strong>Judo</strong>: Técnicas de lanzamiento y control.</li>
+            </ul>
+            <button onclick="mostrarDetalles('artes_externas')">Leer más sobre Artes Externas</button>
+            <div id="artes_externas" class="hidden">
+                <p>El Confucianismo influye en la moralidad y disciplina en las artes marciales externas, mientras que el Bushido resalta el honor...</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Filosofías de Artes Marciales. Todos los derechos reservados.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
