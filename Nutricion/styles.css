@@ -1,0 +1,69 @@
+/* General Styles */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('images/gokucomiendo1.JPG') no-repeat center center;
+    background-size: contain; /* Ajusta la imagen para que se vea completamente sin distorsión */
+    background-position: center center; /* Asegura que la imagen se centre bien */
+    color: #fff; /* Texto en blanco para mejor visibilidad */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative; /* Para la superposición */
+    background-color: #000; /* Fondo de respaldo para evitar problemas de carga */
+}
+
+/* Superposición oscura sobre el fondo */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Superposición oscura */
+    z-index: -1; /* Envía detrás del contenido */
+}
+
+/* Form Styles */
+form {
+    background: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
