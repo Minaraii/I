@@ -1,0 +1,78 @@
+/*css basico */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    width: 100%;
+    background: #222;
+    color: white;
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    margin: 0;
+
+}
+
+.menu button {
+    background: none;
+    border: none;
+    color:white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+nav {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: white;
+    color: black;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+nav.hidden {
+    display: none;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 8px;
+    color: black;
+    transition: background 0.2s;
+}
+
+nav a:hover {
+    background: #f0f0f0;
+}
+
+.intro {
+    text-align:center;
+    margin-top: 50px;
+    background: #9cec06e8;
+    color: rgb(0, 0, 0);
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #0056b3;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="device-width, initial-scale">
+        <title>Vitaly</title>
+        <link rel="stylesheet" href="../static/css/index.css">
+    </head>
+<body>
+    <header>
+        <h1>Vitaly</h1>
+        <div class="menu">
+            <button id="menu-btn" class="hidden">☰</button>
+            <nav id="menu-option" class="hidden">
+                <a href="calc.html">Calculadora</a>
+                <a href="#">Mi progreso</a>
+                <a href="#">Planes</a>
+                <a href="#"Contacto></a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Welcome To Vitaly</h2>
+            <p>Healthy body healthy mind</p>
+            <a href="calc.html" class="btn">Start Now</a>
+        </section>
+    </main>
+
+    <script>
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('menu-options');
+        btn.onclick = () => menu.classList.toggle('hidden');
+    </script>
+</body>
+</html>

@@ -3,7 +3,8 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-    background: url('images/gokucomiendo1.JPG') no-repeat center center;
+    /* Cambié la ruta de la imagen */
+    background: url("/images/gokucomiendo1.JPG") no-repeat center center;
     background-size: contain; /* Ajusta la imagen para que se vea completamente sin distorsión */
     background-position: center center; /* Asegura que la imagen se centre bien */
     color: #fff; /* Texto en blanco para mejor visibilidad */

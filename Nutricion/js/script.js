@@ -1,27 +1,44 @@
-// Asegurar que el script se ejecuta
-console.log("El script se está ejecutando.");
+// Captura del formulario y el resultado
+const form = document.getElementById('nutrition-form');
+const resultDiv = document.getElementById('result');
 
-document.getElementById('nutrition-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evita que la página se recargue al enviar el formulario
+form.addEventListener('submit', function (event) {
+    event.preventDefault();
 
-    // 1. Obtener valores del formulario
+    // Obtener valores
     let age = parseInt(document.getElementById('age').value);
     let weight = parseFloat(document.getElementById('weight').value);
     let height = parseFloat(document.getElementById('height').value);
     let activity = parseFloat(document.getElementById('activity').value);
 
-    // 2. Validar que los valores no estén vacíos o sean inválidos
     if (isNaN(age) || isNaN(weight) || isNaN(height) || isNaN(activity)) {
-        document.getElementById('result').innerHTML = "<p style='color: red;'>Por favor, completa todos los campos.</p>";
+        resultDiv.innerHTML = "<p style='color: red;'>Por favor, completa todos los campos.</p>";
         return;
     }
 
-    // 3. Calcular TMB usando la fórmula de Mifflin-St Jeor
+    // Calcular TMB
     let tmb = (10 * weight) + (6.25 * height) - (5 * age) + 5;
-
-    // 4. Ajustar según nivel de actividad
     let caloricNeeds = tmb * activity;
 
-    // 5. Mostrar el resultado en la página
-    document.getElementById('result').innerHTML = `<p>Tu necesidad calórica diaria es de aproximadamente <strong>${Math.round(caloricNeeds)} kcal</strong>.</p>`;
+    // Mostrar resultado principal
+    resultDiv.innerHTML = `<p>Tu necesidad calórica diaria es de aproximadamente <strong>${Math.round(caloricNeeds)} kcal</strong>.</p>
+                            <button id='show-strategy'>Ver estrategia personalizada</button>`;
+
+    // Botón para mostrar estrategia
+    document.getElementById('show-strategy').addEventListener('click', function () {
+        showStrategy(caloricNeeds);
+    });
 });
+
+function showStrategy(calories) {
+    let strategyDiv = document.createElement('div');
+    strategyDiv.id = 'strategy';
+    strategyDiv.innerHTML = `
+        <h3>Estrategia Personalizada</h3>
+        <p>Para subir de peso: consume al menos <strong>${Math.round(calories + 500)} kcal</strong> al día.</p>
+        <p>Para bajar de peso: reduce tu ingesta a <strong>${Math.round(calories - 500)} kcal</strong> al día.</p>
+        <p>Incluye alimentos como arroz, queso, frutos secos y legumbres para un aumento saludable.</p>
+        <p>Para perder peso, prioriza vegetales, proteínas magras y control de porciones.</p>
+    `;
+    resultDiv.appendChild(strategyDiv);
+}
