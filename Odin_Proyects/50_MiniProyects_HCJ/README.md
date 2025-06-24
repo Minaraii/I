@@ -2,6 +2,5 @@
 
 ## 📘   Lista de retos
 
-| #  | Proyecto                         | Estado     | Mi versión |
-|----|----------------------------------|------------|            |
-| 01 | Expanding Cards                  | "Progreso"    " 1.0 "                                                  
+# 1 Expanding Cards
+# 2 Progress Steps                                                  
