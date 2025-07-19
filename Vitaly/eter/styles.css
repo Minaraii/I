@@ -1,0 +1,137 @@
+/*Reset basico*/
+* {
+    margin:0;
+    padding:0;
+    box-sizing: 0;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    line-height:1.6;
+    padding:20px;
+}
+
+header {
+    background: #111;
+    color: #fff;
+    padding: 20px;
+    text-align:center;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.logo {
+    font-size: 2.5em;
+    color: #00bcd4;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-top: 10px;
+}
+
+nav a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #00bcd4;
+}
+
+/*Secciones*/
+
+section {
+    margin-bottom: 40px; 
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #444;
+}
+
+/* Productos */
+
+.producto {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    text-align: center;
+    max-width: 400px;
+}
+
+.producto img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.precio {
+    font-weight: bold;
+    color: #009688;
+    margin: 10px 0;
+}
+
+button {
+    background: #00bcd4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #008c9e;
+}
+
+/*Carrito*/
+
+#carrito {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-width: 500px;
+}
+
+#lista-carrito {
+    list-style: none;
+    margin-bottom: 15px;
+}
+
+form input, form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+form button {
+    align-self:flex-start
+}
+
+/*Footer*/
+footer {
+    text-align:center;
+    padding: 20px;
+    background: #222;
+    color: #aaa;
+    border-radius: 12px;
+}
+
+footer a {
+    color: #00bcd4;
+    text-decoration: none;
+}

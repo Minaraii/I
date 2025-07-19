@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codigos Del Buen Comer</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!--Encabezado-->
+<header>
+    <h1 class="logo">🌀 Codigos Del Buen Comer</h1>
+    <nav>
+        <ul>
+            <li><a href="#Productos">Productos</a></li>
+            <li><a href="#Contacto">Contacto</a></li>
+            <li><a href="#Politica">Politica</a></li>
+        </ul>
+    </nav>
+</header>
+    <!--Seccion de productos-->
+    <section id="Productos">
+        <h2>Nuestros E-books</h2>
+
+        <div class="producto">
+            <img src="img/Logo Basic.png" alt="E-book Logo Basic" />
+            <h3>E-book</h3>
+            <p>Codigos Del Buen Comer</p>
+            <p class="precio">$10.00 USD</p>
+            <button onclick="agregarAlCarrito('E-book Codigos Del Buen Comer', 10.00)">Añadir al carrito</button>
+        </div>
+
+        <!--Aqui puedes duplicar mas productos-->
+    </section>
+    
+    <!--Carrito simple-->
+    <!-- 🛒 Carrito unificado -->
+<section id="carrito">
+  <h2>🛒 Carrito</h2>
+  <ul id="cart-items"></ul>
+  <p>Total: <span id="cart-total">$0</span> USD</p>
+  <button onclick="procesarCompra()">Comprar</button>
+</section>
+
+    <!--Contacto-->
+    <section id="Contacto">
+        <h2>Contacto</h2>
+        <form>
+            <input type="text" placeholder="Tu nombre" required/>
+            <input type="email" placeholder="Correo electronico" required/>
+            <textarea placeholder="Mensaje..."></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <!--Politica-->
+    <footer id="Politica">
+        <p>© 2025 Codigos Del Buen Comer. Todos los derechos reservados.</p>
+        <p><a href="#">Politica de privacidad</a></p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
