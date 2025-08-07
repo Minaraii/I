@@ -5,8 +5,10 @@ Una página web hecha desde cero donde las personas pueden ver productos, agrega
 
 También puede describirse como:
 
-E-commerce básico autogestionado
-
-Mini tienda online full código
-
 Tienda web personalizada y 100% tuya
+
+Lineas De Codigo
+
+HTML:100
+CSS:200
+JS:300
