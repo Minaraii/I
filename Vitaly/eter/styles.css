@@ -32,9 +32,9 @@ body{margin:0;}
     width: 250%;
     height: 250%;
     background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
-    background-size: 350px 350px; /*estrellas mas grandes*/
-    animation: starsMove 120s linear infinite;
-    opacity: 0.8; /* mas visible*/
+    background-size: 500px 500px; /*estrellas mas grandes*/
+    animation: starsMove 120s linear infinite, starsTwinkle 3s ease-in-out infinite alternate;
+    opacity: 0.9; /* mas visible*/
 }
 
 @keyframes starsMove {
