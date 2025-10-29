@@ -12,10 +12,11 @@
     <!--Encabezado-->
 <header>
     <!-- Hero principal-->
-     <section class="hero">
-        <div class="hero/content">
-            <h1>🌿 Vitaly 🌿 </h1>
-            <p>Life Present</p>
+     <section class="hero" id="inicio">
+        <div class="hero-text">
+            <p class="hero-eyebrow">Programa Vitaly • 7-21 días</p>
+            <h1 class="hero-title">Vitaly</h1>
+            <p class="hero-subtitle">Life Present</p>
         </div>
      </section>
 
@@ -34,25 +35,33 @@
     </nav>
 
 </header>
+    <!-- Contenedor principal-->
+    <section class="contenido">
+        <!-- Seccion de recetas-->
+        <div id="recetas" class="recetas">
+            <h2>Listas de Recetas</h2>
+            <ol>
+                <li>Brocoli + Coliflor</li>
+                <li>Zanahoria + Calabacin</li>
+            </ol>
+        </div>
+        
+        <!-- Seccion de productos-->
+         <div id="Productos" class="productos">
+         <h2>Nuestros E-books</h2>
 
-    <!-- Seccion de recetas-->
-     <section>
-        <h2>Lista de Recetas</h2>
-        <ol>Vegetales</ol>
-            <li>Brocoli + Coliflor</li>
-     </section>
-
-    <!--Seccion de productos-->
-    <section id="Productos">
-        <h2>Nuestros E-books</h2>
-
-        <div class="producto">
-            <img src="img/Logo Basic.png" alt="E-book Logo Basic" />
+         <div class="producto">
+            <img src="img/Logo Basic.png" alt="E-book Logo Basic"/>
             <h3>E-book</h3>
             <p>Codigos Del Buen Comer</p>
             <p class="precio">$10.00 USD</p>
-            <button onclick="agregarAlCarrito('E-book Codigos Del Buen Comer', 10.00)">Añadir al carrito</button>
-        </div>
+            <button onclick="agregarAlCarrito('E-book Codigos Del Buen Comer', 10.00)">
+            </button>
+            </div>
+         </div>
+
+        
+    </section>
 
         <!--Aqui puedes duplicar mas productos-->
     </section>

@@ -5,6 +5,70 @@
     box-sizing: border-box;
 }
 
+:root{
+    --accent:#2e7d32; --accent-2:#60a5fa; --muted:#a1b5a1;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+body{margin:0;}
+
+/*HERO con cielo estrellado */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    overflow: hidden;
+    background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000 100%);
+}
+
+/* Estrellas animadas */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250%;
+    height: 250%;
+    background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+    background-size: 350px 350px; /*estrellas mas grandes*/
+    animation: starsMove 120s linear infinite;
+    opacity: 0.8; /* mas visible*/
+}
+
+@keyframes starsMove {
+    0% { transform: translate(0, 0)scale(1); }
+    50% { transform: translate(-150px, -150px) scale(1.05); }
+    100% { transform: translate(-300px, -300px) scale(1); }
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 600px;
+}
+
+.hero-eyebrow {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 14px;
+}
+
+.hero-title {
+    font-size: 42px;
+    font-weight: 800;
+    margin: 16px 0 8px;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    color: var(--muted);
+}
+
 body {
     font-family: "Segoe UI", sans-serif;
     background: #f4f4f4;
@@ -114,6 +178,39 @@ h2 {
     color: #444;
 }
 
+/*Contenedor*/
+.contenido {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+.recetas, .producto {
+    flex: 1;
+    max-width: 48%;
+}
+
+@media (max-width: 768px) {
+    .contenido {
+        flex-direction: column;
+    }
+    .recetas, .productos {
+        max-width: 100%;
+    }
+}
+
+/* Recetas */
+.Recetas {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    text-align: center;
+    max-width: 400px;
+}
+
 /* Productos */
 
 .producto {
@@ -140,7 +237,7 @@ h2 {
 }
 
 button {
-    background: #00bcd4;
+    background: #bbe5eb;
     color: white;
     border: none;
     padding: 10px 20px;
