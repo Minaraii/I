@@ -23,6 +23,50 @@ header {
     margin-bottom: 30px;
 }
 
+/* Hero principal */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 25vh; /*Ocupa el alto de la pantalla */
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.hero::after {
+    animation-duration: 200s;
+    opacity: 0.5;
+}
+
+@keyframes moveStars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-1000px); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    text-align: center;
+    backdrop-filter: brightness(1.2);
+}
+
+.hero h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(255,255,255,0.2);
+}
+
+.hero p {
+    font-size: 1.1em;
+    color: #cde8ff;
+}
+
 .logo {
     font-size: 2.5em;
     color: #00bcd4;

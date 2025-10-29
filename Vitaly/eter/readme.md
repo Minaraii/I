@@ -9,6 +9,6 @@ Tienda web personalizada y 100% tuya
 
 Lineas De Codigo
 
-HTML:100
-CSS:200
-JS:300
+HTML:65
+CSS:136
+JS:0
