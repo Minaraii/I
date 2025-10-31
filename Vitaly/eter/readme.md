@@ -9,6 +9,12 @@ Tienda web personalizada y 100% tuya
 
 Lineas De Codigo
 
-HTML:65
-CSS:136
+HTML:86
+CSS:277
 JS:0
+
+31/10/25
+Día 4 – Agenda y Objetivos
+Objetivo principal
+
+Agregar un footer completo y profesional con tus redes sociales, email, copyright y revisión general de la página. Preparar el terreno para la Fase 2.

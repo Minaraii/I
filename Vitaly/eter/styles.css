@@ -172,12 +172,6 @@ section {
     margin-bottom: 40px; 
 }
 
-h2 {
-    margin-bottom: 20px;
-    font-size: 1.8em;
-    color: #444;
-}
-
 /*Contenedor*/
 .contenido {
     display: flex;
@@ -264,14 +258,31 @@ form button {
 
 /*Footer*/
 footer {
-    text-align:center;
-    padding: 20px;
-    background: #222;
-    color: #aaa;
-    border-radius: 12px;
+  background: linear-gradient(250deg, #1f3a55, #4ca1af);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+footer h2 {
+  margin: 5px 0 0 0; /* menos margen */
+  font-size: 1.8em;
+}
+
+footer h5 {
+  margin: 0 0 10px 0; /* ajusta espacio entre títulos */
+  font-weight: 300;
+  color: #aaa;
 }
 
 footer a {
-    color: #00bcd4;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 8px;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #ff9900; /* efecto épico al pasar el mouse */
 }
