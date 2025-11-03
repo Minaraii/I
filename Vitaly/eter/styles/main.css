@@ -5,10 +5,6 @@
     box-sizing: border-box;
 }
 
-:root{
-    --accent:#2e7d32; --accent-2:#60a5fa; --muted:#a1b5a1;
-    font-family: 'Inter', system-ui, sans-serif;
-}
 body{margin:0;}
 
 /*HERO con cielo estrellado */

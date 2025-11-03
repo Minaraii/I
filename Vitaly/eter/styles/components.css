@@ -1,0 +1,89 @@
+/* contenedor general */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* titulo de seccion */
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--muted);
+    text-align: center;
+}
+
+/* layout de cards: responsive con wrap */
+.cards-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* CARD base */
+.card {
+    background: var(--card-bg);  /*color card */
+    border-radius: var(--radius);   /* bordes redondeados */
+    box-shadow: var(--shadow);   /* sombra suave */
+    padding: 22px;   /*espacio interno */
+    width: 260px;   /*ancho base */
+    text-align: center;
+    transition: transform var(--transition), box-shadow var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* icono: grande y centrado */
+.cad-icon {
+    font-size: 36;
+    width:72px;
+    height: 72px;
+    margin: 0 auto;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(111,179,184,0.12), rgba(111,179,184,0.06));
+}
+
+/* titulo y texto */
+.card-title {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #162323;
+}
+.card-text {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+/* CTA (boton) */
+.card-cta {
+    margin-top: auto;  /*empuja el CTA al final */
+    display: inline-block;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: var(--accent);
+    background-color: rgb(218, 250, 250);
+    color: rgb(55, 196, 252);
+    text-decoration: none;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+/* hover suave: eleva la card y CTA */
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(15,15,15,0.12);
+}
+.card:hover .card-cta {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(111,179,184,0.18);
+}
+
+/*Responsive: si la pantalla es chica, las cards ocupan casi todo */
+@media (max-width: 720px) {
+    .cad { width: calc(100% - 40px);}   /* margen lateral implicito por gap */
+    .container { padding: 20px; }
+}

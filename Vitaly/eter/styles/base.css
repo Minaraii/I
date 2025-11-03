@@ -1,0 +1,19 @@
+:root{
+    --bg: #f5f7f6; /* Fondo General */
+    --cad-bg: #ffffff; /* Fondo de Cards */
+    --accent: #6fb3b8; /* Color acento(wellnes)*/
+    --muted: #6b6b6b; /* Texto secundario */
+    --radius: 12px; /* Radio de bordes*/
+    --shadow: 0 10px 25px rgba(15,15,15,0.08); 
+    --transition: 300ms ease;
+    --max-width: 1100px;
+    --accent:#2e7d32; --accent-2:#60a5fa; --muted:#a1b5a1;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+body{
+    background: var(--bg);
+    color: #222;
+    font-family: Inter, system-ui, Arial, sans-serif;
+    line-height: 1.5;
+}
