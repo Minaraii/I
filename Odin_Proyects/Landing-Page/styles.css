@@ -1,24 +1,38 @@
+/* Estilos del contenedor principal del header 
+Uso display: flex por que quiero los elementos en una sola fila.
+Justify-content: space-between separa logo a la izquierda y links a la derecha 
+align-items: center alinea verticalmente. */
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 80px;
+    padding: 10px 70px;
     background-color: #1F2937;
-    color: white;
+    color:#f9faf8;
 }
 
+
+/*
+El logo debe ser mas grande y destacarse.
+font-weight hace que se vea "pesado" */
 .header-logo {
-    font-size: 37px;
-    font-weight: 900;
+    font-size: 24px;
+    font-weight: 700;
 }
 
+/*
+Los enlaces van dentro del nav, necesito espacio entre cada uno: 
+uso margin-left para separarlos horizontalmente. */
 .header-links a {
-    color: #e5e7eb;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 18px;
+    color: #e5e7eb; /* gris claro */
+    text-decoration: none; /*quitar subrayado*/
+    margin-left: 20px;/* espacio entre cada link */
+    font-size: 15px;
 }
 
+/* 
+Cuando paso el mouse encima del link lo subrayo para indicar interaccion. */
 .header-links a:hover {
     text-decoration: underline;
 }
