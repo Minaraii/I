@@ -25,7 +25,7 @@ font-weight hace que se vea "pesado" */
 Los enlaces van dentro del nav, necesito espacio entre cada uno: 
 uso margin-left para separarlos horizontalmente. */
 .header-links a {
-    color: #e5e7eb; /* gris claro */
+    color: rgb(173, 170, 170); /* gris claro */
     text-decoration: none; /*quitar subrayado*/
     margin-left: 20px;/* espacio entre cada link */
     font-size: 15px;
