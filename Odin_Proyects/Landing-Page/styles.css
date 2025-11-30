@@ -36,3 +36,50 @@ Cuando paso el mouse encima del link lo subrayo para indicar interaccion. */
 .header-links a:hover {
     text-decoration: underline;
 }
+
+/* HERO GENERAL */
+.hero {
+    display: flex; /* Dos columnas lado a lado */
+    align-items: center; /* Centra verticalmente el texto con la imagen */
+    justify-content: space-between; /*Espacio entre ambas columnas */
+    padding: 70px 100px; /* Espacio interno para que respire */
+    gap: 40px; /* Separacion entre texto e imagen */
+}
+
+/* TEXTO DEL HERO */
+.hero-text {
+    max-width: 500px; /* Limitar el ancho del texto para que se vea elegante */
+
+}
+
+.hero-text h1 {
+    font-size: 48px; /* Gran titulo principal */
+    font-weight: 700; /* Negrita */;
+    margin-bottom: 30px; /* Separacion del parrafo */
+}
+
+.hero-text p {
+    font-size:18px;
+    margin-bottom: 30px;
+}
+
+.hero-text ul {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+/*BOTON DEL HERO */
+.cta-btn {
+    padding: 12px 24px; /*Tamaño del boton */
+    background: #3882f6; /*Color principal */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Boton redondeado */
+    cursor: pointer; 
+}
+
+/*IMAGEN*/
+.hero-image img {
+    width: 300px; /*Tamaño de la imagen */
+    border-radius: 7px; /* Redondeado suave */
+}
