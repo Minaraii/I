@@ -1,8 +1,14 @@
+/* Agregar un reset para evitar que cualquier margen cree espacios indeseados:*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* Estilos del contenedor principal del header 
 Uso display: flex por que quiero los elementos en una sola fila.
 Justify-content: space-between separa logo a la izquierda y links a la derecha 
 align-items: center alinea verticalmente. */
-
 .header {
     display: flex;
     justify-content: space-between;
@@ -10,6 +16,7 @@ align-items: center alinea verticalmente. */
     padding: 10px 70px;
     background-color: #1F2937;
     color:#f9faf8;
+    gap:0;
 }
 
 
@@ -37,6 +44,11 @@ Cuando paso el mouse encima del link lo subrayo para indicar interaccion. */
     text-decoration: underline;
 }
 
+.menu {
+    background-color: #1F2937;
+    color: rgb(255, 0, 0);
+}
+
 /* HERO GENERAL */
 .hero {
     display: flex; /* Dos columnas lado a lado */
@@ -44,6 +56,8 @@ Cuando paso el mouse encima del link lo subrayo para indicar interaccion. */
     justify-content: space-between; /*Espacio entre ambas columnas */
     padding: 70px 100px; /* Espacio interno para que respire */
     gap: 40px; /* Separacion entre texto e imagen */
+    background-color: #1F2937;
+    color: whitesmoke;
 }
 
 /* TEXTO DEL HERO */
@@ -72,7 +86,7 @@ Cuando paso el mouse encima del link lo subrayo para indicar interaccion. */
 .cta-btn {
     padding: 12px 24px; /*Tamaño del boton */
     background: #3882f6; /*Color principal */
-    color: white;
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 8px; /* Boton redondeado */
     cursor: pointer; 
