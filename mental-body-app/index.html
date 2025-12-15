@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Reset 5</title>
+</head>
+<body>
+    <h1>Reset mental + cuerpo</h1>
+    <p>5 minutos. Sin excusas.</p>
+
+    <button onclick="start()">Empezar rutina</button>
+
+    <p id="step"></p>
+
+    <script>
+        const steps = [
+            "Respira profundo 5 veces",
+            "Rota cuello lentamente 30s",
+            "Estira espalda y hombros",
+            "Cierra los ojos 60s",
+            "Levantate y camina 1 minuto"
+        ];
+        let i = 0;
+        function start() {
+            document.getElementById("step").innerText = steps[i];
+            i = (i + 1) % steps.length;
+        }
+    </script>
+</body>
+</html>
