@@ -5,26 +5,16 @@
     <title>Reset 5</title>
 </head>
 <body>
-    <h1>Reset mental + cuerpo</h1>
-    <p>5 minutos. Sin excusas.</p>
+    <main class="container">
+        <h1>🧠 Reset 5 </h1>
+        <p class="subtitle">Paz mental + movimiento en 5 minutos</p>
 
-    <button onclick="start()">Empezar rutina</button>
+        <div class="card">
+            <p id="step">Presiona empezar</p>
+            <button id="btn">Empezar</button>
+        </div>
+    </main>
 
-    <p id="step"></p>
-
-    <script>
-        const steps = [
-            "Respira profundo 5 veces",
-            "Rota cuello lentamente 30s",
-            "Estira espalda y hombros",
-            "Cierra los ojos 60s",
-            "Levantate y camina 1 minuto"
-        ];
-        let i = 0;
-        function start() {
-            document.getElementById("step").innerText = steps[i];
-            i = (i + 1) % steps.length;
-        }
-    </script>
-</body>
+    <script src="app.js"></script>
+    </body>
 </html>
