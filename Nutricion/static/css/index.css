@@ -76,3 +76,11 @@ nav a:hover {
 .btn:hover {
     background: #0056b3;
 }
+
+.shivako {
+    margin-top: 30px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    gap: 10px;
+}
