@@ -1,0 +1,272 @@
+/* ===================================================== */
+/* ================== RESET GLOBAL ===================== */
+/* ===================================================== */
+
+/* Elimina margenes por defecto y mejora el box model */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+/* Fuente base */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+
+/* ===================================================== */
+/* ================== HEADER =========================== */
+/* ===================================================== */
+
+.header {
+  display: flex;
+  /* Layout horizontal */
+  justify-content: space-between;
+  /* Separar logo y links */
+  align-items: center;
+  /* Centrado vertical */
+  padding: 20px 100px;
+  background-color: #1F2937;
+  color: #f9faf8;
+}
+
+.header-logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.header-links a {
+  color: #d1d5db;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.header-links a:hover {
+  text-decoration: underline;
+}
+
+/* ===================================================== */
+/* ================== HERO ============================= */
+/* ===================================================== */
+
+.hero {
+  display: flex;
+  /* Layout horizontal */
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  padding: 100px 80px;
+  background-color: #1F2937;
+  color: white;
+}
+
+.hero-text {
+  max-width: 500px;
+  /* Limita ancho para mejorar lectura */
+}
+
+.hero-text h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.cta-btn {
+  padding: 12px 24px;
+  background-color: #3882f6;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.hero-image img {
+  width: 350px;
+  border-radius: 8px;
+}
+
+/* ===================================================== */
+/* ================== FEATURES ====================== */
+/* ===================================================== */
+
+.features {
+  padding: 100px;
+  background-color: #f9faf8;
+  text-align: center;
+}
+
+.features-title {
+  font-size: 32px;
+  margin-bottom: 60px;
+}
+
+.features-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  /* Permite adaptacion */
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.feature-icon {
+  width: 120px;
+  height: 120px;
+  border: 3px solid #3882f6;
+  border-radius: 15px;
+  margin: 0 auto 20px;
+}
+
+/* ===================================================== */
+/* ================== HIGHLIGHT ====================== */
+/* ===================================================== */
+
+.highlight {
+  background-color: #e5e7eb;
+  padding: 100px;
+}
+
+.highlight-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 30px;
+  border-left: 5px solid #3882f6;
+}
+
+.highlight-text {
+  font-size: 24px;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.highlight-author {
+  text-align: right;
+  font-weight: bold;
+}
+
+/* ===================================================== */
+/* ================== TESTIMONIAL =================== */
+/* ===================================================== */
+
+.testimonial {
+  padding: 80px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.testimonial h2 {
+  margin-bottom: 40px;
+}
+
+.testimonial-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 300px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ===================================================== */
+/* ================== FINAL CTA===================== */
+/* ===================================================== */
+
+.cta-section {
+  background-color: #e5e7eb;
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.cta-box {
+  background-color: #3882f6;
+  color: white;
+  padding: 30px 60px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 700px;
+  width: 100%;
+}
+
+.cta-outline-btn {
+  padding: 10px 30px;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cta-outline-btn:hover {
+  background: white;
+  color: #3882f6;
+}
+
+/* ===================================================== */
+/* ================== FOOTER ======================== */
+/* ===================================================== */
+
+.footer {
+  background-color: #1F2937;
+  color: #e5e7eb;
+  text-align: center;
+  padding: 40px 0;
+}
+
+/* ===================================================== */
+/* ================== RESPONSIVE ==================== */
+/* ===================================================== */
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .hero-image img {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .features {
+    padding: 60px 20px;
+  }
+
+  .highlight {
+    padding: 60px 20px;
+  }
+
+  .cta-section {
+    padding: 60px 20px;
+  }
+
+  .cta-box {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+}
