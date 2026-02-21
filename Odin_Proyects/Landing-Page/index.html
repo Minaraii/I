@@ -1,56 +1,145 @@
 <!DOCTYPE html>
-    <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Landing Page</title>
-            <link rel="stylesheet" href="styles.css">
-        </head>
-        <body>
+<html lang="en">
 
-            <!--Header-->
-            <header class="header">
-                <div class="header-logo">Header Logo</div>
-            
-            <nav class="header-links">
-                <a href="#">header link one</a>
-                <a href="#">header link two</a>
-                <a href="#">header link three</a>
-            </nav>
-            </header>
+<head>
+    <!-- Configuracion basica del documento -->
+    <meta charset="UTF-8">
 
-            <div class="menu">
-                <ol>
-                <li>Header</li>
-                <li>Hero Section</li>
-                <li>Features/Servicios</li>
-                <li>Informacion Destacada</li>
-                <li>Testimonios</li>
-                <li>CTA final</li>
-                <li>Footer</li>
-                </ol>
+    <!-- Hace que el diseño sea responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <!-- Contiene Logo y Navegacion Principal -->
+    <header class="header">
+        <h2 class="header-logo">Header Logo</h2>
+
+        <nav class="header-links">
+            <a href="#">Header link one</a>
+            <a href="#">Header link two</a>
+            <a href="#">Header link three</a>
+        </nav>
+    </header>
+
+    <!-- ================= GUIA ================= -->
+    <div class="guia">
+        <ol>
+            <li>Header</li>
+            <li>Hero</li>
+            <li>Features</li>
+            <li>Quote</li>
+            <li>Testimonials</li>
+            <li>CTA</li>
+            <li>Footer</li>
+        </ol>
+    </div>
+
+    <!-- ================= HERO SECTION ================= -->
+    <!-- Primera seccion visual fuerte de la landing-->
+    <section class="hero">
+
+        <!-- Texto Principal -->
+        <div class="hero-text">
+            <h1>¿Que es un Hero?</h1>
+            <p>Un Hero Section es la parte principal debajo del header que presenta el mensaje central. </p>
+            <button class="cta-btn">Cumbre</button>
+        </div>
+
+        <!-- Imagen representativa -->
+        <div class="hero-image">
+            <img src="images/hero/037d3d54-1f37-4fe3-acc1-ede7878f42dd (1).png" alt="Wireframe ejemplo">
+        </div>
+
+    </section>
+
+    <!-- ================= FEATURES ================= -->
+    <!-- Seccion que muestra beneficios o servicios -->
+    <section class="features">
+        <h2 class="features-title">¿Por que elegirnos?</h2>
+
+        <div class="features-container">
+
+            <div class="feature-card">
+                <div class="feature-icon"></div>
+                <p>Diseño moderno y profesional</p>
             </div>
 
-            <!--HERO-->
-            <section class="hero">
-                
-                <!--Columna izquierda: titulo, texto y boton-->
-                <div class="hero-text">
-                    <h1>Que es un Hero Section</h1>
-                    <p>Un Hero Section es la parte "gigante" que aparece justo debajo del header</p>
-                    <p>Un Hero tipico se divide en dos columnas:</p>
-                    <ul>
-                        <li>Izquierda:Texto + boton</li>
-                        <li>Derecha: Imagen </li>
-                    </ul>
-                    <button class="cta-btn">Registrarse</button>
-                </div>
+            <div class="feature-card">
+                <div class="feature-icon"></div>
+                <p>Desarrollo rapido y optimizado</p>
+            </div>
 
-                <!--Columna derecha: imagen ilustrativa -->
-                <div class="hero-image">
-                    <img src="/images/hero/037d3d54-1f37-4fe3-acc1-ede7878f42dd (1).png" alt="Wireframe">
-                </div>
-            </section>
-        </body>
-    </html>
-   
+            <div class="feature-card">
+                <div class="feature-icon"></div>
+                <p>100% Responsive</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= HIGHLIGHT / QUOTE ================= -->
+    <!-- Seccion visual de cita destacada -->
+    <section class="highlight">
+        <div class="highlight-container">
+
+            <p class="highlight-text">
+                This is an inspiring quote, or a testimonial from a customer. It looks elegante and readable.
+            </p>
+
+            <p class="highlight-author">
+                -Thor, God of Thunder
+            </p>
+
+        </div>
+    </section>
+
+    <!-- ================= TESTIMONIALS ================= -->
+    <!-- Opiniones de usuarios -->
+    <section class="testimonial">
+        <h2>What Our Users Says</h2>
+
+        <div class="testimonial-container">
+
+            <div class="testimonial-card">
+                <p>This is inspiring</p>
+                <span>-Ako</span>
+            </div>
+
+            <div class="testimonial-container">
+                <p>Alcanzare la Cumbre</p>
+                <span>-Andres</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= FINAL CTA ================= -->
+    <!-- Llamado a la accion final -->
+    <section class="cta-section">
+
+        <div class="cta-box">
+
+            <div class="cta-text">
+                <h3>Call to action! It's time!</h3>
+                <p>Sign up for our product by clicking that button right over there!</p>
+            </div>
+
+            <button class="cta-outline-btn">Sign up</button>
+
+        </div>
+
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <p>Copyright © Ako 2026</p>
+    </footer>
+
+</body>
+
+</html>
