@@ -20,31 +20,271 @@ body {
 /* ================== HEADER =========================== */
 /* ===================================================== */
 
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #0f172a;
+}
+
+/* HEADER */
+/* HEADER BASE */
 .header {
   display: flex;
-  /* Layout horizontal */
   justify-content: space-between;
-  /* Separar logo y links */
   align-items: center;
-  /* Centrado vertical */
-  padding: 20px 100px;
-  background-color: #1F2937;
-  color: #f9faf8;
+
+  padding: 10px 20px;
+  background: rgba(10, 15, 25, 0.7);
+
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-.header-logo {
-  font-size: 24px;
-  font-weight: bold;
+/* IZQUIERDA */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.header-links a {
+/* BOTÓN MENU */
+.menu-toggle {
+  font-size: 18px;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.menu-toggle:hover {
+  color: white;
+}
+
+/* LOGO BASE */
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+
+  cursor: pointer;
+}
+
+/* TEXTO PRINCIPAL */
+.logo-main {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+
+  /* 🔥 efecto gradiente */
+  background: linear-gradient(135deg, #e5e7eb, #9ca3af);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  transition: all 0.3s ease;
+}
+
+/* TEXTO JAPONÉS */
+.logo-sub {
+  font-size: 12px;
+  color: #6b7280;
+
+  transition: all 0.3s ease;
+}
+
+/* 🔥 HOVER ÉPICO */
+.logo:hover .logo-main {
+  background: linear-gradient(135deg, #6366f1, #22c55e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  letter-spacing: 2px;
+}
+
+.logo:hover .logo-sub {
+  color: #a78bfa;
+}
+
+/* EFECTO GLOW SUAVE */
+.logo:hover {
+  text-shadow: 0 0 10px rgba(99,102,241,0.3);
+}
+
+/* DERECHA */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ITEMS (idioma + perfil) */
+.nav-item {
+  position: relative;
+  padding: 6px 10px;
+  border-radius: 8px;
+
+  color: #9ca3af;
+  font-size: 13px;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+/* 🔥 EFECTO GLASS HOVER */
+.nav-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  border-radius: 8px;
+
+  background: rgba(255,255,255,0.05);
+  opacity: 0;
+
+  transition: opacity 0.25s ease;
+}
+
+.nav-item:hover::before {
+  opacity: 1;
+}
+
+.nav-item:hover {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* TEXTO ENCIMA DEL GLASS */
+.nav-item span {
+  position: relative;
+  z-index: 1;
+}
+
+/* COLOR AL HACER HOVER */
+.nav-item:hover {
+  color: white;
+}
+
+/* BOTÓN CTA PREMIUM */
+.cta {
+  position: relative;
+  padding: 6px 14px;
+
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+
+  color: white;
+  text-decoration: none;
+
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* EFECTO LUZ EN MOVIMIENTO */
+.cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+
+  transition: all 0.6s ease;
+}
+
+.cta:hover::before {
+  left: 100%;
+}
+
+/* HOVER GENERAL */
+.cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(99,102,241,0.4);
+}
+
+.lang {
+  color: yellow
+}
+
+.guia {
+  color: red;
+}
+/*=================================================== MENU DESPLEGABLE ========================== */
+/* OVERLAY (fondo oscuro) */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+
+/* cuando está activo */
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 260px;
+  height: 100%;
+
+  padding: 20px;
+
+  /* 🔥 vidrio premium */
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(12px);
+
+  border-right: 1px solid rgba(255,255,255,0.05);
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  /* animación suave */
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* estado activo */
+.sidebar.active {
+  transform: translateX(0);
+}
+
+/* LINKS */
+.sidebar a {
   color: #d1d5db;
   text-decoration: none;
-  margin-left: 20px;
+  font-size: 14px;
+
+  padding: 8px 10px;
+  border-radius: 6px;
+
+  transition: all 0.2s ease;
 }
 
-.header-links a:hover {
-  text-decoration: underline;
+/* hover pro */
+.sidebar a:hover {
+  background: rgba(255,255,255,0.05);
+  color: white;
 }
 
 /* ===================================================== */
