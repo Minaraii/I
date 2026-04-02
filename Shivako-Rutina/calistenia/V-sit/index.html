@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V-Sit System | 100 Días</title>
+
+<style>
+:root{
+  --bg:#0b0d10;
+  --card:#12161c;
+  --accent:#00ffcc;
+  --text:#e8f0f2;
+  --muted:#6b7a86;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family: Inter, Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  padding:20px;
+}
+
+.container{
+  max-width:800px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.card{
+  background:var(--card);
+  border-radius:14px;
+  padding:18px;
+  border:1px solid rgba(255,255,255,0.04);
+}
+
+h1{
+  text-align:center;
+  font-size:1.8rem;
+  letter-spacing:1px;
+}
+
+.subtitle{
+  text-align:center;
+  color:var(--muted);
+  font-size:0.85rem;
+}
+
+h2{
+  color:var(--accent);
+  margin-bottom:10px;
+  font-size:1rem;
+}
+
+.block{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.line{
+  display:flex;
+  justify-content:space-between;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  padding:6px 0;
+  font-size:0.9rem;
+}
+
+.line span{
+  color:var(--muted);
+}
+
+.big{
+  text-align:center;
+  font-size:1.4rem;
+  margin-top:6px;
+}
+
+.footer{
+  text-align:center;
+  font-size:0.75rem;
+  color:var(--muted);
+}
+
+button{
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  background:var(--accent);
+  color:#000;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:active{
+  transform:scale(0.98);
+}
+
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<div class="card">
+<h1>V-Sit System</h1>
+<p class="subtitle">100 días | disciplina | control</p>
+<div class="big" id="day">Día 1/100</div>
+</div>
+
+<div class="card">
+<h2>Protocolo Diario</h2>
+<div class="block">
+<div class="line">Compresión <span>10–20 reps</span></div>
+<div class="line">Pike lifts <span>10 reps</span></div>
+<div class="line">L-sit <span>3 sets</span></div>
+<div class="line">Intento V-sit <span>3–5</span></div>
+<div class="line">Estiramiento <span>5–10 min</span></div>
+</div>
+</div>
+
+<div class="card">
+<h2>Estados del Día</h2>
+<div class="block">
+<div class="line">Control <span id="control">-</span></div>
+<div class="line">Altura <span id="altura">-</span></div>
+<div class="line">Sensación <span id="sensacion">-</span></div>
+</div>
+<button onclick="logDay()">Registrar día</button>
+</div>
+
+<div class="card">
+<h2>Reglas</h2>
+<div class="block">
+<div class="line">Sin dolor <span>si duele, paras</span></div>
+<div class="line">Control > ego <span>siempre</span></div>
+<div class="line">Consistencia <span>diaria</span></div>
+<div class="line">Técnica <span>antes que duración</span></div>
+</div>
+</div>
+
+<div class="footer">V-sit / proceso</div>
+
+</div>
+
+<script>
+let currentDay = 1;
+
+function logDay(){
+  if(currentDay < 100){
+    currentDay++;
+    document.getElementById("day").innerText = `Día ${currentDay}/100`;
+  }
+}
+</script>
+
+</body>
+</html>
