@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>V-Sit System | 100 Días</title>
+<title>V-Sit System</title>
 
 <style>
 :root{
@@ -38,23 +38,9 @@ body{
   border:1px solid rgba(255,255,255,0.04);
 }
 
-h1{
-  text-align:center;
-  font-size:1.8rem;
-  letter-spacing:1px;
-}
-
-.subtitle{
-  text-align:center;
-  color:var(--muted);
-  font-size:0.85rem;
-}
-
-h2{
-  color:var(--accent);
-  margin-bottom:10px;
-  font-size:1rem;
-}
+h1{text-align:center;font-size:1.8rem}
+.subtitle{text-align:center;color:var(--muted);font-size:0.85rem}
+h2{color:var(--accent);margin-bottom:10px;font-size:1rem}
 
 .block{
   display:flex;
@@ -70,20 +56,12 @@ h2{
   font-size:0.9rem;
 }
 
-.line span{
-  color:var(--muted);
-}
+.line span{color:var(--muted)}
 
 .big{
   text-align:center;
   font-size:1.4rem;
   margin-top:6px;
-}
-
-.footer{
-  text-align:center;
-  font-size:0.75rem;
-  color:var(--muted);
 }
 
 button{
@@ -98,20 +76,23 @@ button{
   cursor:pointer;
 }
 
-button:active{
-  transform:scale(0.98);
+input{
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  border-radius:8px;
+  border:none;
+  outline:none;
 }
 
 </style>
 </head>
 
 <body>
-<div class="container">
-
 <div class="card">
 <h1>V-Sit System</h1>
 <p class="subtitle">100 días | disciplina | control</p>
-<div class="big" id="day">Día 1/100</div>
+<div class="big" id="day"></div>
 </div>
 
 <div class="card">
@@ -126,39 +107,115 @@ button:active{
 </div>
 
 <div class="card">
-<h2>Estados del Día</h2>
-<div class="block">
-<div class="line">Control <span id="control">-</span></div>
-<div class="line">Altura <span id="altura">-</span></div>
-<div class="line">Sensación <span id="sensacion">-</span></div>
-</div>
-<button onclick="logDay()">Registrar día</button>
+<h2>Registro</h2>
+<input id="note" placeholder="Qué hiciste hoy...">
+<button onclick="logDay()">Guardar día</button>
 </div>
 
 <div class="card">
-<h2>Reglas</h2>
-<div class="block">
-<div class="line">Sin dolor <span>si duele, paras</span></div>
-<div class="line">Control > ego <span>siempre</span></div>
-<div class="line">Consistencia <span>diaria</span></div>
-<div class="line">Técnica <span>antes que duración</span></div>
-</div>
+<h2>Historial</h2>
+<div class="block" id="history"></div>
 </div>
 
-<div class="footer">V-sit / proceso</div>
-
 </div>
+
+<button onclick="exportData()">Exportar datos</button>
 
 <script>
-let currentDay = 1;
+function getHistory(){
+  return JSON.parse(localStorage.getItem("history")) || [];
+}
+
+function saveHistory(history){
+  localStorage.setItem("history", JSON.stringify(history));
+}
+
+function updateDay(){
+  let history = getHistory();
+  let currentDay = history.length + 1;
+  document.getElementById("day").innerText = `Día ${currentDay}/100`;
+}
 
 function logDay(){
-  if(currentDay < 100){
-    currentDay++;
-    document.getElementById("day").innerText = `Día ${currentDay}/100`;
+  let note = document.getElementById("note").value;
+  if(note.trim() === "") return;
+
+  let history = getHistory();
+
+  history.push({
+    day: history.length + 1,
+    note: note
+  });
+
+  saveHistory(history);
+
+  document.getElementById("note").value = "";
+  renderHistory();
+  updateDay();
+}
+
+function deleteDay(index){
+  let history = getHistory();
+  history.splice(index, 1);
+
+  // 🔥 Reordenar días automáticamente
+  history = history.map((entry, i) => ({
+    day: i + 1,
+    note: entry.note
+  }));
+
+  saveHistory(history);
+  renderHistory();
+  updateDay();
+}
+
+function editDay(index){
+  let history = getHistory();
+  let newNote = prompt("Editar día:", history[index].note);
+
+  if(newNote !== null && newNote.trim() !== ""){
+    history[index].note = newNote;
+    saveHistory(history);
+    renderHistory();
   }
 }
-</script>
 
+function renderHistory(){
+  let history = getHistory();
+  let container = document.getElementById("history");
+
+  container.innerHTML = "";
+
+  history.forEach((entry, index) => {
+    let div = document.createElement("div");
+    div.className = "line";
+
+    div.innerHTML = `
+      Día ${entry.day}
+      <span>${entry.note}</span>
+      <div>
+        <button onclick="editDay(${index})">✏️</button>
+        <button onclick="deleteDay(${index})">❌</button>
+      </div>
+    `;
+
+    container.appendChild(div);
+  });
+}
+
+// INIT
+renderHistory();
+updateDay();
+
+// Exportar Datos 
+function exportData(){
+  let data = localStorage.getItem("history");
+  let blob = new Blob([data], {type:"application/json"});
+  let a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "vsit-data.json";
+  a.click();
+}
+</script>
 </body>
 </html>
