@@ -4,74 +4,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nutrición Tracker</title>
+  <title>Nutrition Pro Tracker</title>
 
-  <!-- CSS externo -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <div class="container">
-    <h1>🥗 Nutrición Tracker</h1>
+  <div class="app">
 
-    <div class="grid">
+    <header>
+      <h1>🔥 Nutrition Pro</h1>
+      <p>Disciplina diaria = resultados reales</p>
+    </header>
 
-      <div class="card">
-        <h2>Día</h2>
-        <input id="dayCalories" type="number" placeholder="Calorías del día">
+    <section class="today">
+      <h2>Hoy</h2>
+      <input id="calories" type="number" placeholder="Calorías">
+      <input id="protein" type="number" placeholder="Proteína (g)">
+      <input id="carbs" type="number" placeholder="Carbs (g)">
+      <input id="fat" type="number" placeholder="Grasas (g)">
+
+      <!-- NUEVOS CAMPOS PERSONALIZADOS -->
+      <div id="customFields"></div>
+
+      <input id="newField" type="text" placeholder="Añadir nuevo (ej: Omega 3)">
+      <button onclick="addField()">+ Añadir campo</button>
+
+      <button onclick="saveDay()">Guardar Día</button>
+    </section>
+
+    <section class="progress">
+      <h2>Progreso</h2>
+      <div class="bar">
+        <div id="progressBar"></div>
       </div>
+      <p id="progressText">0%</p>
+    </section>
 
-      <div class="card">
-        <h2>Semana</h2>
-        <input id="weekCalories" type="number" placeholder="Calorías semana">
-      </div>
+    <section class="stats" id="stats"></section>
 
-      <div class="card">
-        <h2>Mes</h2>
-        <input id="monthCalories" type="number" placeholder="Calorías mes">
-      </div>
-
-      <div class="card">
-        <h2>Año</h2>
-        <input id="yearCalories" type="number" placeholder="Calorías año">
-      </div>
-
-    </div>
-
-    <button onclick="saveData()">Guardar Progreso</button>
-
-    <div class="stats" id="stats">
-      Sin datos aún...
-    </div>
   </div>
 
   <script>
-    function saveData() {
-      const data = {
-        day: document.getElementById('dayCalories').value,
-        week: document.getElementById('weekCalories').value,
-        month: document.getElementById('monthCalories').value,
-        year: document.getElementById('yearCalories').value
+    const GOAL = 2000;
+
+    let customFields = JSON.parse(localStorage.getItem('customFields')) || [];
+
+    function addField() {
+      const name = document.getElementById('newField').value.trim();
+      if (!name) return;
+
+      customFields.push(name);
+      localStorage.setItem('customFields', JSON.stringify(customFields));
+
+      document.getElementById('newField').value = '';
+      renderFields();
+    }
+
+    function renderFields() {
+      const container = document.getElementById('customFields');
+
+      container.innerHTML = customFields.map(field => `
+        <input type="number" id="field_${field}" placeholder="${field}">
+      `).join('');
+    }
+
+    function saveDay() {
+      let entry = {
+        date: new Date().toLocaleDateString(),
+        calories: +document.getElementById('calories').value || 0,
+        protein: +document.getElementById('protein').value || 0,
+        carbs: +document.getElementById('carbs').value || 0,
+        fat: +document.getElementById('fat').value || 0,
+        extra: {}
       };
 
-      localStorage.setItem('nutritionData', JSON.stringify(data));
+      customFields.forEach(field => {
+        entry.extra[field] = +document.getElementById('field_' + field)?.value || 0;
+      });
+
+      let data = JSON.parse(localStorage.getItem('nutritionPro')) || [];
+      data.push(entry);
+
+      localStorage.setItem('nutritionPro', JSON.stringify(data));
+
       render();
     }
 
     function render() {
-      const data = JSON.parse(localStorage.getItem('nutritionData'));
+      let data = JSON.parse(localStorage.getItem('nutritionPro')) || [];
 
-      if (!data) return;
+      let total = data.reduce((acc, d) => acc + d.calories, 0);
+      let percent = Math.min((total / GOAL) * 100, 100);
 
-      document.getElementById('stats').innerHTML = `
-        Día: ${data.day || 0} kcal <br>
-        Semana: ${data.week || 0} kcal <br>
-        Mes: ${data.month || 0} kcal <br>
-        Año: ${data.year || 0} kcal
-      `;
+      document.getElementById('progressBar').style.width = percent + '%';
+      document.getElementById('progressText').innerText = percent.toFixed(0) + '%';
+
+      document.getElementById('stats').innerHTML = data.map(d => {
+        let extras = Object.entries(d.extra || {})
+          .map(([k, v]) => `${k}: ${v}`)
+          .join(' | ');
+
+        return `
+          <div class="log">
+            📅 ${d.date} - ${d.calories} kcal | P:${d.protein} C:${d.carbs} G:${d.fat}
+            <br>${extras}
+          </div>
+        `;
+      }).join('');
     }
 
+    renderFields();
     render();
   </script>
 
