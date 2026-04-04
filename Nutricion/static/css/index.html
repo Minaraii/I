@@ -1,0 +1,80 @@
+<!-- ===================== index.html ===================== -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nutrición Tracker</title>
+
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>🥗 Nutrición Tracker</h1>
+
+    <div class="grid">
+
+      <div class="card">
+        <h2>Día</h2>
+        <input id="dayCalories" type="number" placeholder="Calorías del día">
+      </div>
+
+      <div class="card">
+        <h2>Semana</h2>
+        <input id="weekCalories" type="number" placeholder="Calorías semana">
+      </div>
+
+      <div class="card">
+        <h2>Mes</h2>
+        <input id="monthCalories" type="number" placeholder="Calorías mes">
+      </div>
+
+      <div class="card">
+        <h2>Año</h2>
+        <input id="yearCalories" type="number" placeholder="Calorías año">
+      </div>
+
+    </div>
+
+    <button onclick="saveData()">Guardar Progreso</button>
+
+    <div class="stats" id="stats">
+      Sin datos aún...
+    </div>
+  </div>
+
+  <script>
+    function saveData() {
+      const data = {
+        day: document.getElementById('dayCalories').value,
+        week: document.getElementById('weekCalories').value,
+        month: document.getElementById('monthCalories').value,
+        year: document.getElementById('yearCalories').value
+      };
+
+      localStorage.setItem('nutritionData', JSON.stringify(data));
+      render();
+    }
+
+    function render() {
+      const data = JSON.parse(localStorage.getItem('nutritionData'));
+
+      if (!data) return;
+
+      document.getElementById('stats').innerHTML = `
+        Día: ${data.day || 0} kcal <br>
+        Semana: ${data.week || 0} kcal <br>
+        Mes: ${data.month || 0} kcal <br>
+        Año: ${data.year || 0} kcal
+      `;
+    }
+
+    render();
+  </script>
+
+</body>
+</html>
+
