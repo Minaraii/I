@@ -1,124 +1,184 @@
-<!-- ===================== index.html ===================== -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nutrition Pro Tracker</title>
-
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <div class="app">
+<div class="app">
 
-    <header>
-      <h1>🔥 Nutrition Pro</h1>
-      <p>Disciplina diaria = resultados reales</p>
-    </header>
+  <header>
+    <h1>🔥 Nutrition Pro</h1>
+    <p>Disciplina diaria = resultados reales</p>
+  </header>
 
-    <section class="today">
-      <h2>Hoy</h2>
-      <input id="calories" type="number" placeholder="Calorías">
-      <input id="protein" type="number" placeholder="Proteína (g)">
-      <input id="carbs" type="number" placeholder="Carbs (g)">
-      <input id="fat" type="number" placeholder="Grasas (g)">
+  <section class="today">
+    <h2>Hoy</h2>
 
-      <!-- NUEVOS CAMPOS PERSONALIZADOS -->
-      <div id="customFields"></div>
+    <input id="calories" type="number" placeholder="Calorías">
+    <input id="protein" type="number" placeholder="Proteína (g)">
+    <input id="carbs" type="number" placeholder="Carbs (g)">
+    <input id="fat" type="number" placeholder="Grasas (g)">
 
-      <input id="newField" type="text" placeholder="Añadir nuevo (ej: Omega 3)">
-      <button onclick="addField()">+ Añadir campo</button>
+    <div id="customFields"></div>
 
-      <button onclick="saveDay()">Guardar Día</button>
-    </section>
+    <div class="add-field">
+      <input id="newField" type="text" placeholder="Ej: Omega 3">
+      <button onclick="addField()">+</button>
+    </div>
 
-    <section class="progress">
-      <h2>Progreso</h2>
-      <div class="bar">
-        <div id="progressBar"></div>
+    <button onclick="saveDay()">Guardar Día</button>
+  </section>
+
+  <section class="progress">
+    <h2>Resumen</h2>
+    <div id="summary"></div>
+  </section>
+
+  <section>
+    <h2>Historial</h2>
+    <div id="stats"></div>
+  </section>
+
+</div>
+
+<script>
+const GOAL = 2000;
+
+let customFields = JSON.parse(localStorage.getItem('customFields')) || [];
+
+function addField() {
+  const input = document.getElementById('newField');
+  const name = input.value.trim();
+
+  if (!name || customFields.includes(name)) return;
+
+  customFields.push(name);
+  localStorage.setItem('customFields', JSON.stringify(customFields));
+
+  input.value = "";
+  renderFields();
+}
+
+function removeField(name) {
+  customFields = customFields.filter(f => f !== name);
+  localStorage.setItem('customFields', JSON.stringify(customFields));
+  renderFields();
+}
+
+function renderFields() {
+  const container = document.getElementById('customFields');
+
+  container.innerHTML = customFields.map(f => `
+    <div class="field-row">
+      <input type="number" id="field_${f}" placeholder="${f}">
+      <span class="delete" onclick="removeField('${f}')">✕</span>
+    </div>
+  `).join('');
+}
+
+function saveDay() {
+  const now = new Date();
+
+  const entry = {
+    id: Date.now(),
+    date: now.toISOString(),
+    calories: +document.getElementById('calories').value || 0,
+    protein: +document.getElementById('protein').value || 0,
+    carbs: +document.getElementById('carbs').value || 0,
+    fat: +document.getElementById('fat').value || 0,
+    extra: {}
+  };
+
+  customFields.forEach(f => {
+    entry.extra[f] = +document.getElementById('field_' + f)?.value || 0;
+  });
+
+  let data = JSON.parse(localStorage.getItem('nutritionPro')) || [];
+  data.push(entry);
+
+  localStorage.setItem('nutritionPro', JSON.stringify(data));
+
+  render();
+}
+
+function deleteEntry(id) {
+  let data = JSON.parse(localStorage.getItem('nutritionPro')) || [];
+  data = data.filter(d => d.id !== id);
+
+  localStorage.setItem('nutritionPro', JSON.stringify(data));
+
+  render();
+}
+
+function formatDate(dateStr) {
+  return new Date(dateStr).toLocaleDateString();
+}
+
+function groupStats(data) {
+  const now = new Date();
+
+  let day = 0, week = 0, month = 0, year = 0;
+
+  data.forEach(d => {
+    const date = new Date(d.date);
+
+    if (date.toDateString() === now.toDateString()) day += d.calories;
+
+    if ((now - date) <= 7 * 24 * 60 * 60 * 1000) week += d.calories;
+
+    if (
+      date.getMonth() === now.getMonth() &&
+      date.getFullYear() === now.getFullYear()
+    ) month += d.calories;
+
+    if (date.getFullYear() === now.getFullYear()) year += d.calories;
+  });
+
+  return { day, week, month, year };
+}
+
+function render() {
+  let data = JSON.parse(localStorage.getItem('nutritionPro')) || [];
+
+  const stats = groupStats(data);
+
+  document.getElementById('summary').innerHTML = `
+    <div class="summary-box">Hoy: <b>${stats.day}</b> kcal</div>
+    <div class="summary-box">Semana: <b>${stats.week}</b> kcal</div>
+    <div class="summary-box">Mes: <b>${stats.month}</b> kcal</div>
+    <div class="summary-box">Año: <b>${stats.year}</b> kcal</div>
+  `;
+
+  document.getElementById('stats').innerHTML = data.map(d => {
+
+    const extras = Object.entries(d.extra || {})
+      .map(([k, v]) => `${k}: ${v}`)
+      .join(' • ');
+
+    return `
+      <div class="log">
+        <div class="log-top">
+          <span>${formatDate(d.date)}</span>
+          <span class="delete" onclick="deleteEntry(${d.id})">✕</span>
+        </div>
+
+        <div class="log-main">
+          ${d.calories} kcal | P:${d.protein} C:${d.carbs} G:${d.fat}
+        </div>
+
+        <div class="log-extra">${extras}</div>
       </div>
-      <p id="progressText">0%</p>
-    </section>
+    `;
+  }).join('');
+}
 
-    <section class="stats" id="stats"></section>
-
-  </div>
-
-  <script>
-    const GOAL = 2000;
-
-    let customFields = JSON.parse(localStorage.getItem('customFields')) || [];
-
-    function addField() {
-      const name = document.getElementById('newField').value.trim();
-      if (!name) return;
-
-      customFields.push(name);
-      localStorage.setItem('customFields', JSON.stringify(customFields));
-
-      document.getElementById('newField').value = '';
-      renderFields();
-    }
-
-    function renderFields() {
-      const container = document.getElementById('customFields');
-
-      container.innerHTML = customFields.map(field => `
-        <input type="number" id="field_${field}" placeholder="${field}">
-      `).join('');
-    }
-
-    function saveDay() {
-      let entry = {
-        date: new Date().toLocaleDateString(),
-        calories: +document.getElementById('calories').value || 0,
-        protein: +document.getElementById('protein').value || 0,
-        carbs: +document.getElementById('carbs').value || 0,
-        fat: +document.getElementById('fat').value || 0,
-        extra: {}
-      };
-
-      customFields.forEach(field => {
-        entry.extra[field] = +document.getElementById('field_' + field)?.value || 0;
-      });
-
-      let data = JSON.parse(localStorage.getItem('nutritionPro')) || [];
-      data.push(entry);
-
-      localStorage.setItem('nutritionPro', JSON.stringify(data));
-
-      render();
-    }
-
-    function render() {
-      let data = JSON.parse(localStorage.getItem('nutritionPro')) || [];
-
-      let total = data.reduce((acc, d) => acc + d.calories, 0);
-      let percent = Math.min((total / GOAL) * 100, 100);
-
-      document.getElementById('progressBar').style.width = percent + '%';
-      document.getElementById('progressText').innerText = percent.toFixed(0) + '%';
-
-      document.getElementById('stats').innerHTML = data.map(d => {
-        let extras = Object.entries(d.extra || {})
-          .map(([k, v]) => `${k}: ${v}`)
-          .join(' | ');
-
-        return `
-          <div class="log">
-            📅 ${d.date} - ${d.calories} kcal | P:${d.protein} C:${d.carbs} G:${d.fat}
-            <br>${extras}
-          </div>
-        `;
-      }).join('');
-    }
-
-    renderFields();
-    render();
-  </script>
+renderFields();
+render();
+</script>
 
 </body>
 </html>
-
