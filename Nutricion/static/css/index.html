@@ -13,22 +13,41 @@
 <body>
 
 <div class="app">
+  <!-- 🔥 PANEL RDA BIEN HECHO -->
+<div class="rda-panel">
+  <h4>📊 Recomendado</h4>
 
-  <!-- 🔥 Panel RDA -->
-  <div class="rda-panel">
-    <h4>📊 Recomendado</h4>
-    <p>🔥 Cal: 2000 kcal</p>
-    <p>💪 Prot: 50g</p>
-    <p>🍞 Carbs: 275g</p>
-    <p>🥑 Grasas: 70g</p>
-    <p>🐟 Omega 3: 1.6g</p>
-    <p>🧬 B12: 2.4mcg</p>
-  </div>
+  <p>🔥 Cal: <span id="rda-cal">2000</span> kcal</p>
+  <p>💪 Prot: <span id="rda-prot">50</span> g</p>
+  <p>🍞 Carbs: <span id="rda-carb">275</span> g</p>
+  <p>🥑 Grasas: <span id="rda-fat">70</span> g</p>
+  <p>🐟 Omega 3: <span id="rda-omega">1.6</span> g</p>
+  <p>🧬 B12: <span id="rda-b12">2.4</span> mcg</p>
+</div>
 
-  <header>
-    <h1>Nutrition Pro</h1>
-    <p>Control total. Cuerpo disciplinado.</p>
-  </header>
+<!-- CONFIG -->
+<section class="card">
+  <h2>⚙️ Configuración</h2>
+
+  <input id="weight" type="number" placeholder="Peso (kg)">
+
+  <select id="goal">
+    <option value="maintain">Mantener</option>
+    <option value="cut">Bajar grasa</option>
+    <option value="bulk">Ganar músculo</option>
+  </select>
+
+  <select id="activity">
+    <option value="1.2">Sedentario</option>
+    <option value="1.4">Ligero</option>
+    <option value="1.6">Moderado</option>
+    <option value="1.8">Activo</option>
+  </select>
+
+  <button onclick="calculatePlan()">Calcular</button>
+
+  <div id="planResult" class="plan-box"></div>
+</section>
 
   <section class="card">
     <h2>Registrar Día</h2>
@@ -185,6 +204,225 @@ function render() {
 
 renderFields();
 render();
+
+function calculatePlan() {
+  const weight = +document.getElementById('weight').value;
+  const goal = document.getElementById('goal').value;
+  const activity = +document.getElementById('activity').value;
+
+  if (!weight) return;
+
+  // 🔥 Calorías base (simple y efectivo)
+  let calories = weight * 22 * activity;
+
+  // Ajuste según objetivo
+  if (goal === "cut") calories -= 300;
+  if (goal === "bulk") calories += 300;
+
+  // 💪 Proteína ideal
+  let protein = weight * 1.8;
+
+  // Guardar en localStorage
+  const plan = { calories, protein };
+  localStorage.setItem('nutritionPlan', JSON.stringify(plan));
+
+  renderPlan();
+}
+
+function renderPlan() {
+  const plan = JSON.parse(localStorage.getItem('nutritionPlan'));
+  if (!plan) return;
+
+  document.getElementById('planResult').innerHTML = `
+    <div class="plan-box">
+      🔥 Calorías objetivo: <b>${Math.round(plan.calories)}</b><br>
+      💪 Proteína ideal: <b>${Math.round(plan.protein)}g</b>
+    </div>
+  `;
+
+  // 🔥 valores base seguros
+const baseRDA = {
+  cal: 2000,
+  prot: 50,
+  carb: 275,
+  fat: 70,
+  omega: 1.6,
+  b12: 2.4
+};
+
+let resetTimer;
+
+// 🔥 actualizar panel (NO rompe diseño)
+function updateRDA(data){
+  document.getElementById("rda-cal").textContent = Math.round(data.cal);
+  document.getElementById("rda-prot").textContent = Math.round(data.prot);
+  document.getElementById("rda-carb").textContent = Math.round(data.carb);
+  document.getElementById("rda-fat").textContent = Math.round(data.fat);
+  document.getElementById("rda-omega").textContent = data.omega.toFixed(1);
+  document.getElementById("rda-b12").textContent = data.b12;
+}
+
+// 🔥 reset automático
+function resetRDA(){
+  updateRDA(baseRDA);
+}
+
+// 🔥 función principal PRO
+function calculatePlan(){
+
+  const weight = +document.getElementById("weight").value;
+  const goal = document.getElementById("goal").value;
+  const activity = +document.getElementById("activity").value;
+
+  if(!weight){
+    alert("Ingresa tu peso");
+    return;
+  }
+
+  // 🔥 calorías base
+  let calories = weight * 22 * activity;
+
+  // 🔥 ajuste objetivo
+  if(goal === "cut") calories -= 400;
+  if(goal === "bulk") calories += 400;
+
+  // 🔥 proteína (2g/kg)
+  let protein = weight * 2;
+
+  // 🔥 grasas (25% calorías)
+  let fat = (calories * 0.25) / 9;
+
+  // 🔥 carbs (restante)
+  let carbs = (calories - (protein * 4 + fat * 9)) / 4;
+
+  // 🔥 omega 3
+  let omega = weight * 0.02;
+
+  // 🔥 b12 estándar
+  let b12 = 2.4;
+
+  const result = {
+    cal: calories,
+    prot: protein,
+    carb: carbs,
+    fat: fat,
+    omega: omega,
+    b12: b12
+  };
+
+  // 🔥 guardar plan
+  localStorage.setItem("nutritionPlan", JSON.stringify(result));
+
+  // 🔥 mostrar resultado bonito
+  document.getElementById("planResult").innerHTML = `
+    <div>
+      🔥 <b>${Math.round(calories)}</b> kcal<br>
+      💪 <b>${Math.round(protein)}g</b> proteína<br>
+      🍞 <b>${Math.round(carbs)}g</b> carbs<br>
+      🥑 <b>${Math.round(fat)}g</b> grasas
+    </div>
+  `;
+
+  // 🔥 actualizar panel
+  updateRDA(result);
+
+  // 🔥 reset automático (30s)
+  clearTimeout(resetTimer);
+  resetTimer = setTimeout(resetRDA, 30000);
+}
+
+
+// 🔥 cargar plan al iniciar
+function loadSavedPlan(){
+  const saved = JSON.parse(localStorage.getItem("nutritionPlan"));
+  if(saved){
+    updateRDA(saved);
+  }
+}
+
+loadSavedPlan();
+}
+
+// cargar al inicio
+renderPlan();
+
+// 🔥 valores base (default)
+const baseValues = {
+  cal: 2000,
+  prot: 50,
+  carb: 275,
+  fat: 70,
+  omega: 1.6,
+  b12: 2.4
+};
+
+let resetTimer;
+
+// 🔥 función principal
+function calcularPlan(){
+
+  const peso = parseFloat(document.getElementById("peso").value);
+  const objetivo = document.getElementById("objetivo").value;
+  const actividad = parseFloat(document.getElementById("actividad").value);
+
+  if(!peso){
+    alert("Ingresa tu peso bro");
+    return;
+  }
+
+  // 🔥 calorías base (Mifflin simplificado)
+  let calorias = peso * 22 * actividad;
+
+  // 🔥 ajuste por objetivo
+  if(objetivo === "bajar") calorias -= 400;
+  if(objetivo === "subir") calorias += 400;
+
+  // 🔥 proteína
+  let proteina = peso * 2; // 2g/kg estándar fitness
+
+  // 🔥 grasas (25% calorías)
+  let grasas = (calorias * 0.25) / 9;
+
+  // 🔥 carbs (resto)
+  let carbs = (calorias - (proteina * 4 + grasas * 9)) / 4;
+
+  // 🔥 omega 3 (por peso)
+  let omega = peso * 0.02; // ~0.02g/kg
+
+  // 🔥 B12 fija (segura estándar)
+  let b12 = 2.4;
+
+  // 🔥 actualizar UI
+  updateRDA(calorias, proteina, carbs, grasas, omega, b12);
+
+  // 🔥 reset automático
+  clearTimeout(resetTimer);
+  resetTimer = setTimeout(resetRDA, 30000);
+}
+
+
+// 🔥 actualizar valores en pantalla
+function updateRDA(cal, prot, carb, fat, omega, b12){
+  document.getElementById("rda-cal").textContent = Math.round(cal);
+  document.getElementById("rda-prot").textContent = Math.round(prot);
+  document.getElementById("rda-carb").textContent = Math.round(carb);
+  document.getElementById("rda-fat").textContent = Math.round(fat);
+  document.getElementById("rda-omega").textContent = omega.toFixed(1);
+  document.getElementById("rda-b12").textContent = b12;
+}
+
+
+// 🔥 volver a valores base
+function resetRDA(){
+  updateRDA(
+    baseValues.cal,
+    baseValues.prot,
+    baseValues.carb,
+    baseValues.fat,
+    baseValues.omega,
+    baseValues.b12
+  );
+}
 </script>
 
 </body>
