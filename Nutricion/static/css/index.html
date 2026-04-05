@@ -3,42 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nutrition Pro Tracker</title>
+  <title>Nutrition Pro</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="app">
 
+  <!-- 🔥 Panel RDA -->
+  <div class="rda-panel">
+    <h4>📊 Recomendado</h4>
+    <p>🔥 Cal: 2000 kcal</p>
+    <p>💪 Prot: 50g</p>
+    <p>🍞 Carbs: 275g</p>
+    <p>🥑 Grasas: 70g</p>
+    <p>🐟 Omega 3: 1.6g</p>
+    <p>🧬 B12: 2.4mcg</p>
+  </div>
+
   <header>
-    <h1>🔥 Nutrition Pro</h1>
-    <p>Disciplina diaria = resultados reales</p>
+    <h1>Nutrition Pro</h1>
+    <p>Control total. Cuerpo disciplinado.</p>
   </header>
 
-  <section class="today">
-    <h2>Hoy</h2>
+  <section class="card">
+    <h2>Registrar Día</h2>
 
-    <input id="calories" type="number" placeholder="Calorías">
-    <input id="protein" type="number" placeholder="Proteína (g)">
-    <input id="carbs" type="number" placeholder="Carbs (g)">
-    <input id="fat" type="number" placeholder="Grasas (g)">
+    <input id="calories" type="number" placeholder="🔥 Calorías">
+    <input id="protein" type="number" placeholder="💪 Proteína">
+    <input id="carbs" type="number" placeholder="🍞 Carbs">
+    <input id="fat" type="number" placeholder="🥑 Grasas">
 
     <div id="customFields"></div>
 
     <div class="add-field">
-      <input id="newField" type="text" placeholder="Ej: Omega 3">
+      <input id="newField" type="text" placeholder="Añadir nutriente (Ej: Zinc)">
       <button onclick="addField()">+</button>
     </div>
 
-    <button onclick="saveDay()">Guardar Día</button>
+    <button onclick="saveDay()">Guardar</button>
   </section>
 
-  <section class="progress">
+  <section class="card">
     <h2>Resumen</h2>
     <div id="summary"></div>
   </section>
 
-  <section>
+  <section class="card">
     <h2>Historial</h2>
     <div id="stats"></div>
   </section>
@@ -46,8 +61,6 @@
 </div>
 
 <script>
-const GOAL = 2000;
-
 let customFields = JSON.parse(localStorage.getItem('customFields')) || [];
 
 function addField() {
@@ -120,57 +133,51 @@ function formatDate(dateStr) {
 
 function groupStats(data) {
   const now = new Date();
+  let day=0, week=0, month=0, year=0;
 
-  let day = 0, week = 0, month = 0, year = 0;
-
-  data.forEach(d => {
+  data.forEach(d=>{
     const date = new Date(d.date);
 
-    if (date.toDateString() === now.toDateString()) day += d.calories;
+    if (date.toDateString() === now.toDateString()) day+=d.calories;
+    if ((now - date) <= 7*86400000) week+=d.calories;
 
-    if ((now - date) <= 7 * 24 * 60 * 60 * 1000) week += d.calories;
+    if (date.getMonth()===now.getMonth() && date.getFullYear()===now.getFullYear())
+      month+=d.calories;
 
-    if (
-      date.getMonth() === now.getMonth() &&
-      date.getFullYear() === now.getFullYear()
-    ) month += d.calories;
-
-    if (date.getFullYear() === now.getFullYear()) year += d.calories;
+    if (date.getFullYear()===now.getFullYear())
+      year+=d.calories;
   });
 
-  return { day, week, month, year };
+  return {day,week,month,year};
 }
 
 function render() {
   let data = JSON.parse(localStorage.getItem('nutritionPro')) || [];
-
   const stats = groupStats(data);
 
   document.getElementById('summary').innerHTML = `
-    <div class="summary-box">Hoy: <b>${stats.day}</b> kcal</div>
-    <div class="summary-box">Semana: <b>${stats.week}</b> kcal</div>
-    <div class="summary-box">Mes: <b>${stats.month}</b> kcal</div>
-    <div class="summary-box">Año: <b>${stats.year}</b> kcal</div>
+    <div class="summary">Hoy: ${stats.day} kcal</div>
+    <div class="summary">Semana: ${stats.week}</div>
+    <div class="summary">Mes: ${stats.month}</div>
+    <div class="summary">Año: ${stats.year}</div>
   `;
 
-  document.getElementById('stats').innerHTML = data.map(d => {
-
-    const extras = Object.entries(d.extra || {})
-      .map(([k, v]) => `${k}: ${v}`)
-      .join(' • ');
+  document.getElementById('stats').innerHTML = data.map(d=>{
+    const extras = Object.entries(d.extra||{})
+      .map(([k,v])=>`${k}: ${v}`).join(" • ");
 
     return `
       <div class="log">
-        <div class="log-top">
-          <span>${formatDate(d.date)}</span>
+        <div class="top">
+          ${formatDate(d.date)}
           <span class="delete" onclick="deleteEntry(${d.id})">✕</span>
         </div>
 
-        <div class="log-main">
-          ${d.calories} kcal | P:${d.protein} C:${d.carbs} G:${d.fat}
+        <div class="main">
+          🔥 ${d.calories} | 💪 ${d.protein} | 🍞 ${d.carbs} | 🥑 ${d.fat}
         </div>
 
-        <div class="log-extra">${extras}</div>
+        <div class="extra">${extras}</div>
       </div>
     `;
   }).join('');
