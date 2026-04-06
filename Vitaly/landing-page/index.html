@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Vitaly</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav class="nav">
+    <h2>⚡ VITALY</h2>
+    <div>
+      <button class="login">Log in</button>
+      <button class="signup">Sign up</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <h1>Eleva tu energía diaria</h1>
+    <p>Descubre cómo la comida impacta tu enfoque, mente y rendimiento</p>
+    <button onclick="scrollToApp()">Empezar</button>
+  </section>
+
+  <!-- FEATURES -->
+
+  <section class="features">
+    <div class="card">
+      <h3>⚡ Energía</h3>
+      <p>Identifica qué comidas te potencian.</p>
+    </div>
+
+```
+<div class="card">
+  <h3>🧠 Enfoque</h3>
+  <p>Mejora tu rendimiento mental.</p>
+</div>
+
+<div class="card">
+  <h3>📊 Control</h3>
+  <p>Registra y analiza cómo te sientes.</p>
+</div>
+```
+
+  </section>
+
+  <!-- APP -->
+
+  <section class="app" id="app">
+    <h2>Tu registro</h2>
+
+```
+<input type="text" id="name" placeholder="Nombre de la receta">
+<textarea id="ingredients" placeholder="Ingredientes"></textarea>
+<textarea id="steps" placeholder="Preparación"></textarea>
+
+<button onclick="saveRecipe()">Guardar receta</button>
+
+<div id="recipes"></div>
+```
+
+  </section>
+
+  <script src="app.js"></script>
+
+</body>
+</html>

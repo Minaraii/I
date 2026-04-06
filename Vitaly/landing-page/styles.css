@@ -1,0 +1,111 @@
+body {
+margin: 0;
+font-family: Arial, sans-serif;
+background: radial-gradient(circle, #0b0b0f, #000);
+color: white;
+}
+
+/* NAV */
+.nav {
+display: flex;
+justify-content: space-between;
+padding: 20px 40px;
+}
+
+.nav button {
+margin-left: 10px;
+padding: 8px 15px;
+border-radius: 20px;
+border: none;
+cursor: pointer;
+}
+
+.login {
+background: transparent;
+color: white;
+border: 1px solid #444;
+}
+
+.signup {
+background: #00e676;
+color: black;
+}
+
+/* HERO */
+.hero {
+text-align: center;
+padding: 100px 20px;
+}
+
+.hero h1 {
+font-size: 40px;
+color: #00e676;
+}
+
+.hero p {
+opacity: 0.8;
+margin: 15px 0;
+}
+
+.hero button {
+padding: 12px 25px;
+border-radius: 25px;
+border: none;
+background: #00e676;
+color: black;
+cursor: pointer;
+}
+
+/* FEATURES */
+.features {
+display: flex;
+justify-content: center;
+gap: 20px;
+padding: 40px;
+}
+
+.card {
+background: #111;
+padding: 20px;
+border-radius: 15px;
+width: 180px;
+border: 1px solid #222;
+transition: 0.3s;
+}
+
+.card:hover {
+transform: translateY(-5px);
+border-color: #00e676;
+}
+
+/* APP */
+.app {
+max-width: 500px;
+margin: auto;
+padding: 40px 20px;
+}
+
+input, textarea, button {
+width: 100%;
+margin-bottom: 10px;
+padding: 12px;
+border-radius: 10px;
+border: none;
+}
+
+input, textarea {
+background: #111;
+color: white;
+}
+
+button {
+background: #00e676;
+color: black;
+}
+
+.recipe {
+background: #111;
+padding: 15px;
+border-radius: 10px;
+margin-top: 10px;
+}
