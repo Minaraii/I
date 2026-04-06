@@ -5,19 +5,20 @@
   <meta charset="UTF-8">
   <title>Vitaly</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
-  <!-- NAVBAR -->
-
-  <nav class="nav">
-    <h2>⚡ VITALY</h2>
-    <div>
-      <button class="login">Log in</button>
-      <button class="signup">Sign up</button>
-    </div>
-  </nav>
+<!--HEADER-->
+  <header>
+    <!-- Hero principal-->
+     <section class="header" id="inicio">
+        <div class="header-text">
+            <h1 class="header-title">Vitaly</h1>
+            <p class="header-subtitle">Life Present</p>
+        </div>
+     </section>
+  </header>
 
   <!-- HERO -->
 
@@ -30,22 +31,23 @@
   <!-- FEATURES -->
 
   <section class="features">
-    <div class="card">
-      <h3>⚡ Energía</h3>
-      <p>Identifica qué comidas te potencian.</p>
-    </div>
 
-```
-<div class="card">
-  <h3>🧠 Enfoque</h3>
-  <p>Mejora tu rendimiento mental.</p>
-</div>
+  <div class="card">
+    <h3>⚡ Energía</h3>
+    <p>Identifica qué comidas te potencian.</p>
+  </div>
 
-<div class="card">
-  <h3>📊 Control</h3>
-  <p>Registra y analiza cómo te sientes.</p>
-</div>
-```
+  <div class="card">
+    <h3>🧠 Enfoque</h3>
+    <p>Mejora tu rendimiento mental.</p>
+  </div>
+
+  <div class="card">
+    <h3>📊 Control</h3>
+    <p>Registra y analiza cómo te sientes.</p>
+  </div>
+
+</section>
 
   </section>
 
@@ -54,7 +56,7 @@
   <section class="app" id="app">
     <h2>Tu registro</h2>
 
-```
+
 <input type="text" id="name" placeholder="Nombre de la receta">
 <textarea id="ingredients" placeholder="Ingredientes"></textarea>
 <textarea id="steps" placeholder="Preparación"></textarea>
@@ -62,7 +64,7 @@
 <button onclick="saveRecipe()">Guardar receta</button>
 
 <div id="recipes"></div>
-```
+
 
   </section>
 
