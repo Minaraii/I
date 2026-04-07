@@ -70,16 +70,11 @@ body {
 }
 
 .header-title {
-  font: 700 46px 'Orbitron', sans-serif;
-  margin: 16px 0;
-  letter-spacing: 1px;
-
-  background: linear-gradient(90deg, #00e676, #00c853);
+  background: linear-gradient(90deg, #00e676, #00b0ff, #ff00ff);
+  background-size: 200%;
+  background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  text-shadow: 0 0 15px rgba(0,230,118,0.3);
-  animation: glow 4s linear infinite;
+  color: transparent;
 }
 
 @keyframes glow {
@@ -96,24 +91,55 @@ body {
 
 /* HERO */
 .hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 100px 20px;
+
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: white;
 }
-.hero h1 {
-  font-size: 40px;
-  color: #00e676;
+
+.hero-content {
+  max-width: 700px;
+  padding: 20px;
 }
-.hero p {
-  opacity: 0.8;
-  margin: 15px 0;
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
+
+  background: linear-gradient(90deg, #00e676, #00b0ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
-.hero button {
-  padding: 12px 25px;
-  border-radius: 25px;
+
+.hero-subtitle {
+  font-size: 18px;
+  color: #94a3b8;
+  margin-bottom: 24px;
+}
+
+.hero-btn {
+  padding: 12px 28px;
+  font-size: 16px;
   border: none;
-  background: #00e676;
-  color: black;
+  border-radius: 999px;
   cursor: pointer;
+
+  background: linear-gradient(90deg, #00e676, #00b0ff);
+  color: black;
+  font-weight: 600;
+
+  transition: 0.3s ease;
+}
+
+.hero-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 230, 118, 0.4);
 }
 
 /* FEATURES */
