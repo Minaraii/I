@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cosmic Capital</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #02030a;
+      overflow: hidden;
+      font-family: sans-serif;
+      color: #eaf2ff;
+    }
+
+    body:before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(white 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: star 60s linear infinite;
+      opacity: .15;
+    }
+
+    @keyframes star {
+      from { transform: translate(0, 0); }
+      to { transform: translate(-500px, -500px); }
+    }
+
+    .box {
+      position: relative;
+      background: rgba(10, 12, 20, .8);
+      border: 1px solid rgba(255, 255, 255, .08);
+      padding: 22px;
+      border-radius: 20px;
+      width: 310px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 0 40px rgba(0, 0, 0, .8);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 34px;
+      background: linear-gradient(90deg, #4ade80, #22d3ee, #a78bfa);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      text-shadow: 0 0 20px rgba(167, 139, 250, .5);
+    }
+
+    p {
+      margin: 5px 0;
+      font-size: 12px;
+      opacity: .6;
+    }
+
+    .bar {
+      height: 6px;
+      background: #111;
+      border-radius: 6px;
+      margin: 12px 0;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4ade80, #22d3ee, #a78bfa);
+      width: 0%;
+      transition: .6s;
+    }
+
+    .row {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    input {
+      flex: 1;
+      background: #06080f;
+      border: 1px solid #222;
+      border-radius: 8px;
+      color: #fff;
+      padding: 6px;
+    }
+
+    button {
+      flex: 1;
+      background: linear-gradient(90deg, #4ade80, #22d3ee);
+      border: none;
+      border-radius: 8px;
+      padding: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .small {
+      font-size: 10px;
+      opacity: .5;
+      margin-top: 6px;
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-family: monospace;
+      font-size: 10px;
+      padding: 4px 8px;
+      color: #00ffe1;
+      text-decoration: none;
+      border: 1px solid rgba(0, 255, 225, 0.4);
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.4);
+      box-shadow: 0 0 6px rgba(0, 255, 225, 0.4);
+      transition: .2s;
+    }
+
+    .back-btn:hover {
+      box-shadow: 0 0 12px #00ffe1;
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="index.html" class="back-btn">←</a>
+
+  <div class="box">
+    <h1 id="cap">$40</h1>
+    <p>Capital Cósmico en expansión</p>
+
+    <div class="bar">
+      <div id="fill" class="fill"></div>
+    </div>
+
+    <p id="meta">Meta: $100</p>
+
+    <div class="row">
+      <input id="inp" type="number" placeholder="Nuevo valor">
+      <button onclick="u()">Actualizar</button>
+    </div>
+
+    <div class="row">
+      <button onclick="resetMeta()">Reiniciar Meta</button>
+      <button onclick="resetAll()">Reset Total</button>
+    </div>
+
+    <div class="small">Tu universo responde a tu ejecución</div>
+  </div>
+
+  <script>
+    let meta = 100;
+
+    function u() {
+      let v = parseFloat(document.getElementById('inp').value);
+      if (!isNaN(v) && v >= 0) {
+        localStorage.setItem('cap', v);
+        r(v);
+      }
+    }
+
+    function r(v) {
+      document.getElementById('cap').innerText = '$' + v;
+
+      let p = Math.min((v / meta) * 100, 100);
+      document.getElementById('fill').style.width = p + '%';
+
+      if (v >= meta) {
+        meta *= 10;
+        localStorage.setItem('meta', meta);
+      }
+
+      document.getElementById('meta').innerText = 'Meta: $' + meta;
+    }
+
+    function resetMeta() {
+      meta = 100;
+      localStorage.setItem('meta', meta);
+      r(getCap());
+    }
+
+    function resetAll() {
+      localStorage.clear();
+      meta = 100;
+      r(40);
+    }
+
+    function getCap() {
+      let c = parseFloat(localStorage.getItem('cap'));
+      return isNaN(c) ? 40 : c;
+    }
+
+    window.onload = function () {
+      meta = parseFloat(localStorage.getItem('meta'));
+      if (isNaN(meta)) meta = 100;
+      r(getCap());
+    }
+  </script>
+
+</body>
+</html>
