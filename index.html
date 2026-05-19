@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Retro Cosmic Timer</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      min-height:100vh;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      overflow:hidden;
+
+      font-family:"Courier New", monospace;
+
+      background:
+      radial-gradient(circle at top,
+      #3d0066 0%,
+      #120018 45%,
+      #000000 100%);
+
+      color:white;
+    }
+
+    /* ========================= */
+    /* ESTRELLAS */
+    /* ========================= */
+
+    .stars{
+      position:fixed;
+      inset:0;
+      overflow:hidden;
+      z-index:0;
+    }
+
+    .star{
+      position:absolute;
+      width:2px;
+      height:2px;
+      border-radius:50%;
+      background:white;
+
+      animation: twinkle infinite alternate;
+    }
+
+    @keyframes twinkle{
+      from{
+        opacity:0.2;
+        transform:scale(1);
+      }
+      to{
+        opacity:1;
+        transform:scale(1.7);
+      }
+    }
+
+    /* ========================= */
+    /* CONTENEDOR */
+    /* ========================= */
+
+    .container{
+
+      position:relative;
+      z-index:2;
+
+      width:92%;
+      max-width:760px;
+
+      padding:30px;
+
+      border-radius:28px;
+
+      background:rgba(0,0,0,0.55);
+
+      border:1px solid rgba(250,204,21,0.5);
+
+      backdrop-filter:blur(10px);
+
+      box-shadow:
+      0 0 20px rgba(250,204,21,0.2),
+      0 0 40px rgba(168,85,247,0.25),
+      inset 0 0 25px rgba(255,255,255,0.03);
+    }
+
+    h1{
+      text-align:center;
+
+      color:#fde047;
+
+      font-size:2.3rem;
+
+      margin-bottom:8px;
+
+      text-shadow:
+      0 0 10px rgba(253,224,71,0.8),
+      0 0 30px rgba(168,85,247,0.5);
+    }
+
+    .subtitle{
+      text-align:center;
+
+      color:#d8b4fe;
+
+      font-size:0.95rem;
+
+      margin-bottom:30px;
+    }
+
+    /* ========================= */
+    /* INPUTS */
+    /* ========================= */
+
+    .inputs{
+
+      display:grid;
+
+      grid-template-columns:
+      repeat(auto-fit, minmax(120px,1fr));
+
+      gap:15px;
+
+      margin-bottom:25px;
+    }
+
+    .input-card{
+
+      background:
+      rgba(20,20,20,0.75);
+
+      border:
+      1px solid rgba(168,85,247,0.35);
+
+      border-radius:18px;
+
+      padding:14px;
+
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+
+      transition:0.2s;
+    }
+
+    .input-card:hover{
+
+      border-color:#fde047;
+
+      transform:translateY(-2px);
+
+      box-shadow:
+      0 0 15px rgba(253,224,71,0.2);
+    }
+
+    label{
+
+      color:#fde047;
+
+      font-size:0.9rem;
+
+      text-align:center;
+    }
+
+    input{
+
+      width:100%;
+
+      border:none;
+      outline:none;
+
+      border-radius:12px;
+
+      padding:12px;
+
+      background:#120018;
+
+      color:white;
+
+      text-align:center;
+
+      font-size:1.1rem;
+
+      border:1px solid rgba(168,85,247,0.4);
+
+      transition:0.2s;
+    }
+
+    input:focus{
+
+      border-color:#fde047;
+
+      box-shadow:
+      0 0 10px rgba(253,224,71,0.35);
+    }
+
+    /* ========================= */
+    /* BOTONES */
+    /* ========================= */
+
+    .buttons{
+
+      display:grid;
+
+      grid-template-columns:1fr 1fr;
+
+      gap:15px;
+
+      margin-bottom:25px;
+    }
+
+    button{
+
+      border:none;
+
+      border-radius:16px;
+
+      padding:15px;
+
+      cursor:pointer;
+
+      font-weight:bold;
+
+      font-size:1rem;
+
+      transition:0.2s;
+    }
+
+    .start{
+
+      background:#fde047;
+      color:black;
+
+      box-shadow:
+      0 0 15px rgba(253,224,71,0.4);
+    }
+
+    .reset{
+
+      background:#6b21a8;
+      color:white;
+
+      box-shadow:
+      0 0 15px rgba(168,85,247,0.3);
+    }
+
+    button:hover{
+
+      transform:translateY(-2px) scale(1.01);
+    }
+
+    /* ========================= */
+    /* SECCIONES */
+    /* ========================= */
+
+    .section{
+
+      background:
+      rgba(10,10,10,0.75);
+
+      border:
+      1px solid rgba(253,224,71,0.15);
+
+      border-radius:20px;
+
+      overflow:hidden;
+
+      margin-bottom:18px;
+    }
+
+    .section-header{
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      padding:16px 20px;
+
+      cursor:pointer;
+
+      user-select:none;
+
+      background:
+      rgba(255,255,255,0.02);
+    }
+
+    .section-title{
+
+      color:#fde047;
+
+      font-size:0.95rem;
+
+      letter-spacing:1px;
+    }
+
+    .toggle{
+
+      color:#d8b4fe;
+
+      font-size:1.1rem;
+
+      transition:0.25s;
+    }
+
+    .section-content{
+
+      padding:20px;
+
+      border-top:
+      1px solid rgba(255,255,255,0.05);
+    }
+
+    .collapsed .section-content{
+      display:none;
+    }
+
+    .collapsed .toggle{
+      transform:rotate(-90deg);
+    }
+
+    /* ========================= */
+    /* TIMER */
+    /* ========================= */
+
+    .timer{
+
+      width:100%;
+
+      text-align:center;
+
+      overflow-wrap:break-word;
+
+      font-size:clamp(1.6rem, 5vw, 3rem);
+
+      color:#fde047;
+
+      text-shadow:
+      0 0 10px rgba(253,224,71,0.6);
+
+      font-weight:bold;
+    }
+
+    .hours{
+
+      text-align:center;
+
+      font-size:clamp(2rem, 6vw, 4rem);
+
+      color:#e879f9;
+
+      text-shadow:
+      0 0 15px rgba(232,121,249,0.7);
+
+      font-weight:bold;
+    }
+
+    .description{
+
+      text-align:center;
+
+      color:#a1a1aa;
+
+      font-size:0.9rem;
+
+      margin-top:10px;
+
+      line-height:1.6;
+    }
+
+    /* ========================= */
+    /* RESPONSIVE */
+    /* ========================= */
+
+    @media(max-width:600px){
+
+      .container{
+        padding:20px;
+      }
+
+      h1{
+        font-size:1.8rem;
+      }
+
+      .buttons{
+        grid-template-columns:1fr;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ESTRELLAS -->
+  <div class="stars" id="stars"></div>
+
+  <!-- APP -->
+  <div class="container">
+
+    <h1>✦ RETRO COSMIC TIMER ✦</h1>
+
+    <div class="subtitle">
+      Cuenta regresiva del anochecer digital
+    </div>
+
+    <!-- INPUTS -->
+    <div class="inputs">
+
+      <div class="input-card">
+        <label>Días</label>
+        <input type="number" id="days" value="0" min="0">
+      </div>
+
+      <div class="input-card">
+        <label>Horas</label>
+        <input type="number" id="hours" value="0" min="0">
+      </div>
+
+      <div class="input-card">
+        <label>Minutos</label>
+        <input type="number" id="minutes" value="0" min="0">
+      </div>
+
+      <div class="input-card">
+        <label>Segundos</label>
+        <input type="number" id="seconds" value="0" min="0">
+      </div>
+
+    </div>
+
+    <!-- BOTONES -->
+    <div class="buttons">
+
+      <button class="start" onclick="startTimer()">
+        INICIAR
+      </button>
+
+      <button class="reset" onclick="resetTimer()">
+        REINICIAR
+      </button>
+
+    </div>
+
+    <!-- FORMATO CLASICO -->
+    <div class="section">
+
+      <div class="section-header"
+      onclick="toggleSection(this)">
+
+        <div class="section-title">
+          FORMATO CLÁSICO
+        </div>
+
+        <div class="toggle">
+          ▼
+        </div>
+
+      </div>
+
+      <div class="section-content">
+
+        <div class="timer"
+        id="classicDisplay">
+
+          00:00:00:00
+
+        </div>
+
+        <div class="description">
+          Días : Horas : Minutos : Segundos
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- FORMATO HORAS -->
+    <div class="section collapsed">
+
+      <div class="section-header"
+      onclick="toggleSection(this)">
+
+        <div class="section-title">
+          TOTAL EXACTO EN HORAS
+        </div>
+
+        <div class="toggle">
+          ▼
+        </div>
+
+      </div>
+
+      <div class="section-content">
+
+        <div class="hours"
+        id="hoursDisplay">
+
+          0.00 h
+
+        </div>
+
+        <div class="description">
+          Conteo exacto descendiendo en tiempo real
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    /* ========================= */
+    /* ESTRELLAS */
+    /* ========================= */
+
+    const starsContainer =
+    document.getElementById("stars");
+
+    for(let i = 0; i < 180; i++){
+
+      const star =
+      document.createElement("div");
+
+      star.classList.add("star");
+
+      star.style.left =
+      Math.random() * 100 + "%";
+
+      star.style.top =
+      Math.random() * 100 + "%";
+
+      star.style.animationDuration =
+      (Math.random() * 4 + 1) + "s";
+
+      star.style.opacity =
+      Math.random();
+
+      starsContainer.appendChild(star);
+    }
+
+    /* ========================= */
+    /* TEMPORIZADOR */
+    /* ========================= */
+
+    let totalSeconds = 0;
+    let interval;
+
+    function startTimer(){
+
+      clearInterval(interval);
+
+      const days =
+      parseInt(
+      document.getElementById("days").value)
+      || 0;
+
+      const hours =
+      parseInt(
+      document.getElementById("hours").value)
+      || 0;
+
+      const minutes =
+      parseInt(
+      document.getElementById("minutes").value)
+      || 0;
+
+      const seconds =
+      parseInt(
+      document.getElementById("seconds").value)
+      || 0;
+
+      totalSeconds =
+      (days * 86400) +
+      (hours * 3600) +
+      (minutes * 60) +
+      seconds;
+
+      if(totalSeconds <= 0){
+
+        alert("Ingresa un tiempo válido");
+
+        return;
+      }
+
+      updateDisplay();
+
+      interval = setInterval(() => {
+
+        totalSeconds--;
+
+        updateDisplay();
+
+        if(totalSeconds <= 0){
+
+          clearInterval(interval);
+
+          alert("⏳ Tiempo terminado");
+        }
+
+      },1000);
+    }
+
+    function updateDisplay(){
+
+      let remaining = totalSeconds;
+
+      // FORMATO CLASICO
+
+      const days =
+      Math.floor(remaining / 86400);
+
+      remaining %= 86400;
+
+      const hours =
+      Math.floor(remaining / 3600);
+
+      remaining %= 3600;
+
+      const minutes =
+      Math.floor(remaining / 60);
+
+      const seconds =
+      remaining % 60;
+
+      document.getElementById(
+      "classicDisplay").textContent =
+
+      `${String(days).padStart(2,"0")}:` +
+      `${String(hours).padStart(2,"0")}:` +
+      `${String(minutes).padStart(2,"0")}:` +
+      `${String(seconds).padStart(2,"0")}`;
+
+      // FORMATO HORAS
+
+      const exactHours =
+      (totalSeconds / 3600).toFixed(2);
+
+      document.getElementById(
+      "hoursDisplay").textContent =
+
+      `${exactHours} h`;
+    }
+
+    function resetTimer(){
+
+      clearInterval(interval);
+
+      totalSeconds = 0;
+
+      document.getElementById(
+      "classicDisplay").textContent =
+      "00:00:00:00";
+
+      document.getElementById(
+      "hoursDisplay").textContent =
+      "0.00 h";
+
+      document.getElementById("days").value = 0;
+      document.getElementById("hours").value = 0;
+      document.getElementById("minutes").value = 0;
+      document.getElementById("seconds").value = 0;
+    }
+
+    /* ========================= */
+    /* MINIMIZAR SECCIONES */
+    /* ========================= */
+
+    function toggleSection(header){
+
+      const section =
+      header.parentElement;
+
+      section.classList.toggle("collapsed");
+    }
+
+  </script>
+
+</body>
+</html>
