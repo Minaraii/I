@@ -110,4 +110,36 @@ body {
     display: flex;
 
     justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 40px;
+}
+
+.topbar h1 {
+    font-size: 32px;
+}
+
+/* 
+
+/*BUTTON */
+
+.btn {
+    padding: 12px 20px;
+
+    border:none;
+    border-radius: 12px;
+
+    background: linear-gradient(135deg,#7c3aed,#2563eb);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
 }
