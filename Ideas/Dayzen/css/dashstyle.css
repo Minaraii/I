@@ -81,3 +81,9 @@ body {
 }
 
 /* ACTIVE */
+
+.active {
+    background: linear-gradient(135deg, rgba(124,58,237,0,0.25), rgba(37,99,235,0.2));
+
+    color: white;
+}
