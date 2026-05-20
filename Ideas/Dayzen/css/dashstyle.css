@@ -1,0 +1,52 @@
+/* ===================================================== */
+/* ====================== RESET ========================= */
+/* ===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===================================================== */
+/* ====================== BODY ========================== */
+/* ===================================================== */
+
+body {
+    display: flex;
+
+    min-height: 100vh;
+
+    font-family: sans-serif;
+
+    background: #050816;
+    color: white;
+}
+
+/* ===================================================== */
+/* ====================== SIDEBAR ========================== */
+/* ===================================================== */
+
+.sidebard {
+    width: 240px;
+
+    background: rgba(15, 23, 42, 0.95);
+
+    padding: 30px 20px;
+}
+
+/* LOGO */
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+
+    margin-bottom: 40px;
+
+    background: linear-gradient(135deg,#c084fc,#60a5fa,#facc15);
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
