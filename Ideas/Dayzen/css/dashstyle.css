@@ -50,3 +50,22 @@ body {
 
     -webkit-text-fill-color: transparent;
 }
+
+/* Menu */
+
+.menu {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.menu-item {
+    padding: 14px;
+
+    border-radius: 12px;
+
+    color: #cbd5e1;
+
+    transition: 0.3s;
+}
