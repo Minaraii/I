@@ -29,3 +29,5 @@ Ayudar a las personas a encontrar claridad en el ruido, construyendo hábitos si
 
        🌍 VISIÓN
 Ser la herramienta que ayude a millones a vivir con más enfoque, calma y control sobre su vida.
+
+![Estructura](image.png)
