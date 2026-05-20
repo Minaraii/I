@@ -69,3 +69,15 @@ body {
 
     transition: 0.3s;
 }
+
+/* HOVER */
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+
+    color: white;
+
+    transform: translateX(5px);
+}
+
+/* ACTIVE */
