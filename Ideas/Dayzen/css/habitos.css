@@ -38,3 +38,28 @@ canvas {
     height: 100%;   /* Alto completo */
     z-index: 2;   /* Encima del fondo pero debajo del contenido */
 }
+
+/* Header */
+
+.header {
+    position: absolute;   /* Posiciona el encabezado */
+    top: 40px;   /* Distancia desde arriba */
+    width: 100%;   /* Ancho completo */
+    text-align: center;   /* Centra el texto */
+    z-index: 3;   /* Encima de todo */
+}
+
+
+.header h1 {
+
+    font-size: 32px;   /* Tamaño grande del titulo */
+    letter-spacing: 7px;   /* Espacio entre letras */
+    margin-bottom: 7px;   /* Espacio debajo del titulo */
+}
+
+.header p {
+    font-size: 15px;   /* Tamaño del subtitulo */
+    opacity: 0.7;   /* Un poco transparente */
+}
+
+
