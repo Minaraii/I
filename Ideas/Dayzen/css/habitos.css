@@ -107,3 +107,23 @@ canvas {
     background: #ffd27a;   /* Cambia de color al pasar el mouse */
     color: #050816;   /* Texto se vuelve oscuro */
 }
+
+/* Cards */
+
+.cards {
+    position: absolute;
+    bottom: 40px;   /* Pegado abajo */
+    width: 100%; 
+    display: flex;   /* Los cards en fila */
+    justify-content: center; /* Centrados */
+    gap: 20px;   /* Espacio entre cards */
+    z-index: 3;
+}
+
+.card {
+    padding: 17px 24px;
+        background: rgba(255, 255, 255, 0.08);   /* Fondo semi - transparente */
+        border-radius: 12px;
+        font-size: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.1);   /* Borde sutil */
+}
