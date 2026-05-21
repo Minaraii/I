@@ -62,4 +62,30 @@ canvas {
     opacity: 0.7;   /* Un poco transparente */
 }
 
+/* Centro - Reloj */
 
+.centro {
+    position: absolute;
+    top: 50%;   /* Centrado vertical */
+    left: 50%;   /* Centrado horizontal */
+    transform: translate(-50%, -50%);   /* Ajuste fino para centrar perfectamente */
+    text-align: center;
+    z-index: 3;
+}
+
+.reloj-container {
+    width: 260px;
+    height: 260px;
+    border: 7px solid #ffd27a;   /* Borde dorado */
+    border-radius: 50%;   /* Hace que sea un circulo */
+    display: flex;
+    align-items: center;   /* Centra verticalmente el contenido */
+    justify-content: center;   /* Centra horizontalmente el contenido */
+    margin: 0 auto 30px;   /* Centrado y espacio debajo */
+}
+
+.reloj {
+    font-size: 42px;   /* Tamaño del reloj */
+    font-weight: 300;   /* Texto delgado */
+    letter-spacing: 4px;   /* Espacio entre numeros */
+}
