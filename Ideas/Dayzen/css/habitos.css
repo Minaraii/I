@@ -89,3 +89,21 @@ canvas {
     font-weight: 300;   /* Texto delgado */
     letter-spacing: 4px;   /* Espacio entre numeros */
 }
+
+
+/* Boton */
+
+.btn {
+    padding: 14px 40px;   /* Espacio interno */
+    font-size: 17px;
+    background: transparent;   /* Sin fondo */
+    color: white; 
+    border: 2px solid #ffd27a;   /* Borde dorado */
+    border-radius: 50px;   /* Bordes redondeados */
+    cursor: pointer;   /* Cambia el cursor a mano */
+}
+
+.btn:hover {
+    background: #ffd27a;   /* Cambia de color al pasar el mouse */
+    color: #050816;   /* Texto se vuelve oscuro */
+}
