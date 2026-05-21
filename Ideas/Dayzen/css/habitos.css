@@ -6,3 +6,16 @@
     padding: 0;  /* Quita el relleno interno por defecto */
     box-sizing: border-box;   /* Hace que el padding y border se incluyan en el ancho total */
 }
+
+/*BODY */
+
+body {
+    height: 100vh;   /* Ocupa el 100% del alto de la pantalla */
+    background: #050816;   /* Color de fondo oscuro (azul muy oscuro) */
+    color: white;   /* Color del texto blanco por defecto */
+    font-family: 'Inter', sans-serif;   /* Usa la fuente Inter que importamos */
+    overflow: hidden;   /* Oculta las barras de scroll */
+    position: relative;   /* Permite posicionar elementos hijos con absolute */
+}
+
+
