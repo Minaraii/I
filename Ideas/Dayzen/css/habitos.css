@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+/* Importa la fuente Inter desde Google Fonts para que se vea más bonita */
+
+* {
+    margin: 0;   /* Quita los márgenes por defecto del navegador */
+    padding: 0;  /* Quita el relleno interno por defecto */
+    box-sizing: border-box;   /* Hace que el padding y border se incluyan en el ancho total */
+}
