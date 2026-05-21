@@ -27,3 +27,14 @@ body {
     background: linear-gradient(to bottom, #050816, #02030a);   /* Degradado de arriba hacia abajo */
     z-index: 1;   /* Está por debajo de las estrellas */
 }
+
+/* Estrellas */
+
+canvas {
+    position: absolute;   /* Posicionamiento preciso */
+    top: 0;   /* Arriba del todo */
+    left: 0;   /* Izquierda del todo */
+    width: 100%;   /* Ancho completo */
+    height: 100%;   /* Alto completo */
+    z-index: 2;   /* Encima del fondo pero debajo del contenido */
+}
