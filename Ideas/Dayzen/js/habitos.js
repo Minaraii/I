@@ -72,3 +72,11 @@ function dibujarEstrellas() {
 
 // Iniciamos la animacion de las estrellas
 dibujarEstrellas();
+
+
+// ========== BOTÓN ==========
+
+// Cuando hagan clic en el boton con el id= "startBtn", se ejecuta esta funcion
+document.getElementById("startBtn").addEventListener("click", () => {
+    alert("¡Habito iniciado! ✨ Sigue así.");
+});
