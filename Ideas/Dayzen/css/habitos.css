@@ -19,3 +19,11 @@ body {
 }
 
 
+/* Fondo */
+
+.fondo {
+    position: absolute;   /* Se posiciona respecto al body */
+    inset: 0;   /* Cubre todo el espacio (top, right, bottom, left) */
+    background: linear-gradient(to bottom, #050816, #02030a);   /* Degradado de arriba hacia abajo */
+    z-index: 1;   /* Está por debajo de las estrellas */
+}
