@@ -1,0 +1,19 @@
+/* ========================================= */
+/* RESET GENERAL */
+/* Limpia estilos por defecto del navegador */
+/* ========================================= */
+
+* {
+
+    /* Elimina margenes automaticos*/
+    margin: 0;
+
+    /* Elimina espacios internos */
+    padding: 0;
+
+    /* Hace que el padding y border no rompan el tamaño */
+    box-sizing: border-box;
+
+    /* Fuente global */
+    font-family: Arial, sans-serif;
+}
