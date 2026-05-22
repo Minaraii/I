@@ -17,3 +17,39 @@
     /* Fuente global */
     font-family: Arial, sans-serif;
 }
+
+/* ========================================= */
+/* BODY */
+/* Fondo principal de toda la pagina */
+/* ========================================= */
+
+body {
+
+    /* Evita barras de scroll */
+    overflow:hidden;
+
+    /* Color base */
+    background: #081c15;
+
+    /* Color global del texto */
+    color: white;
+
+    /* Altura minima completa */
+    min-height:100vh;
+
+    /* Fondo degradado circular */
+    background: radial-gradient (
+
+        /* Forma del degradado */
+        circle at top, 
+
+        /* Color inicio */
+        #1b4332,
+
+        /* Color final */
+        #091c15 60%
+    );
+
+    /* Espaciado interno */
+    padding: 30px;
+}
