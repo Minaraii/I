@@ -53,3 +53,51 @@ body {
     /* Espaciado interno */
     padding: 30px;
 }
+
+
+/* ========================================= */
+/* HEADER */
+/* Barra superior */
+/* ========================================= */
+
+header {
+
+    /* Ocupa todo el ancho */
+    width: 100%;
+
+    /* Limita el ancho maximo */
+    max-width: 1200px;
+
+    /* Centra horizontalmente */
+    margin: auto;
+
+    /* Espaciado interno */
+    padding: 18px 30px;
+
+    /* Activa Flexbox */
+    display: flex;
+
+    /* Centra verticalmente */
+    align-items: center;
+
+    /* Separa elementos */
+    justify-content: space-between;
+
+    /* Bordes redondeados */
+    border-radius: 24px;
+
+    /* Fondo transparente */
+    background: rgba(255, 255, 255, .05);
+
+    /* Efecto vidrio */
+    backdrop-filter:blur(17px);
+
+    /* Borde transparente suave */
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    /* Sombra luminosa */
+    box-shadow: 0 0 40px rgba(255, 255, 255, .08), 0 0 80px rgba(255, 255, 255, .08);
+
+    /* Permite usar absolute dentro */
+    position: relative;
+}
