@@ -116,3 +116,40 @@ header {
     /* Espacio entre logo y texto */
     gap: 12px;
 }
+
+/* ========================================= */
+/* CIRCULO DEL LOGO */
+/* ========================================= */
+
+.logo-circle {
+
+  /* TamaÃ±o */
+  width:42px;
+  height:42px;
+
+  /* Lo vuelve cÃ­rculo */
+  border-radius:50%;
+
+  /* Degradado */
+  background:
+  linear-gradient(
+
+    /* DirecciÃ³n */
+    135deg,
+
+    /* Colores */
+    #80ffdb,
+    #64dfdf,
+    #7400b8,
+    #ffd60a
+  );
+
+  /* Brillos */
+  box-shadow:
+  0 0 20px #64dfdf88,
+  0 0 35px #7400b855;
+
+  /* Animacion giratoria */
+  animation:spin 7s linear infinite;
+}
+
