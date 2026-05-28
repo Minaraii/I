@@ -101,3 +101,18 @@ header {
     /* Permite usar absolute dentro */
     position: relative;
 }
+
+/* ========================================= */
+/* LOGO */
+/* ========================================= */
+
+.logo {
+    /* Flexbox horizontal */
+    display: flex;
+
+    /* Centra verticalmente */
+    align-items: center;
+
+    /* Espacio entre logo y texto */
+    gap: 12px;
+}
