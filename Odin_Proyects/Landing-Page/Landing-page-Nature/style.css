@@ -190,4 +190,37 @@ header {
     position: relative;
 }
 
+/* ========================================= */
+/* LÍNEA ANIMADA */
+/* ========================================= */
 
+.center a::after {
+
+    /* Obligatorio para mostrar */
+    content:"";
+
+    /* Posicion absoluta */
+    position:absolute;
+
+    left:0;
+
+    /* Distancia inferior */
+    bottom:-7px;
+
+    /* Empieza invisible */
+    width:0%;
+
+    /* Grosor */
+    height: 3px;
+
+    /* Degradado */
+    background: 
+    linear-gradient(
+        90deg,
+        #80ffdb,
+        #ffd60a,
+        #7400b8
+    );
+
+    /* Suaviza animacion */
+}
