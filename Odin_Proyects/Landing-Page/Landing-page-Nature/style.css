@@ -169,3 +169,25 @@ header {
     /* Corrige el centro exacto */
     transform:translateX(-50%);
 }
+
+/* Link */
+
+.center a {
+
+    /*Quita subrayado */
+    text-decoration:none;
+
+    /* Color texto */
+    color: #d8f3dc;
+
+    /* Tamaño */
+    font-size:1rem;
+
+    /* Suaviza cambios */
+    transition:.3s;
+
+    /* Necesario para pseudo-elementos */
+    position: relative;
+}
+
+
