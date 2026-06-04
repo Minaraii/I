@@ -223,4 +223,21 @@ header {
     );
 
     /* Suaviza animacion */
+    transition: .4s;
 }
+
+/* Hover del link */
+
+.center a:hover {
+
+    color:white;
+}
+
+/* Expande linea */
+
+.center a:hover::after {
+
+    width:100%;
+}
+
+
