@@ -154,7 +154,7 @@ header {
 }
 
 
-* ========================================= */
+/* ========================================= */
 /* LINK DEL CENTRO */
 /* ========================================= */
 
@@ -240,4 +240,56 @@ header {
     width:100%;
 }
 
+/* ========================================= */
+/* BOTÓN NOTAS */
+/* ========================================= */
 
+.notes-btn {
+
+    /* Espaciado interno */
+    padding: 12px 24px;
+
+    /* Elimina borde */
+    border:none;
+
+    /* Bordes redondeados */
+    border-radius: 50px;
+
+    /* Texto blanco */
+    color: white;
+
+    /* Cursor mano */
+    cursor:pointer;
+
+    /* Fondo degradado */
+    background:
+    linear-gradient(
+        135deg,
+        #80ffdb,
+        #5390d9,
+        #7400b8,
+        #ffd60a
+    );
+
+    /* Hace el gradiente mas grande */
+    background-size: 300%;
+
+    /* Sombras */
+    box-shadow:
+    0 0 25px rgba(128, 255, 219, .4),
+    0 0 60px rgba(255, 214, 10, .3);
+
+    /* Suaviza hover */
+    transition: 4s;
+
+    /* Movimiento del gradiente */
+    animation: gradient 8s ease infinite;
+}
+
+/* Hover boton */
+
+.notes-btn:hover {
+
+    /* Eleva boton */
+    transform: translateY(-3px) scale(1.05);
+}
