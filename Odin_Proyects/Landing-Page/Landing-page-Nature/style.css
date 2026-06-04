@@ -153,3 +153,19 @@ header {
   animation:spin 7s linear infinite;
 }
 
+
+* ========================================= */
+/* LINK DEL CENTRO */
+/* ========================================= */
+
+.center {
+
+    /* Posicion absoluta */
+    position:absolute;
+
+    /* Lo mueve al centro */
+    left:50%;
+
+    /* Corrige el centro exacto */
+    transform:translateX(-50%);
+}
