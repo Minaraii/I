@@ -567,3 +567,14 @@ button:hover {
         transform: rotate(360deg);
     }
 }
+
+/* ========================================= */
+/* ANIMACION FLOTAR */
+/* ========================================= */
+
+@keyframes float {
+
+    50%{
+        transform: translateY(15px);
+    }
+}
