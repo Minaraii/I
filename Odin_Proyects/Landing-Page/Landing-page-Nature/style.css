@@ -346,3 +346,21 @@ header {
 
     padding: 20px;
 }
+
+/* ========================================= */
+/* TITULO */
+/* ========================================= */
+
+h1 {
+
+    /* Responsive automatico */
+    font-size:clamp(3rem, 8vw,7rem);
+
+    /* Espaciado letras */
+    letter-spacing: 4px;
+
+    margin-bottom: 15px;
+
+    /* Animacion */
+    animation:fade 1.5s ease;
+}
