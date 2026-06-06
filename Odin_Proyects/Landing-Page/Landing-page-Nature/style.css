@@ -454,3 +454,58 @@ button:hover {
   /* Movimiento */
   animation:float 6s ease-in-out infinite;
 }
+
+/* ========================================= */
+/* MONTAÑAS */
+/* ========================================= */
+
+.montains {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+}
+
+/* Base montaña */
+
+.montain {
+
+    width: 0;
+    height: 0;
+
+    /* Tecnica triangulo */
+    border-left: 220px solid transparent;
+    border-right: 220px solid transparent;
+}
+
+/* Montaña izquierda */
+
+.m1 {
+
+    border-bottom: 360px solid #1b4332;
+}
+
+/* Montaña centro */
+
+.m2 {
+    
+    border-bottom: 500px solid #2d6a4f;
+
+    /* Escala */ 
+    transform: scale(1.1);
+}
+
+/* Montaña derecha */
+
+.m3{
+
+    border-bottom:400px solid #163020;
+}
