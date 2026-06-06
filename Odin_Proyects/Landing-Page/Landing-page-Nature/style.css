@@ -424,3 +424,33 @@ button:hover {
     /* Brillo */
     box-shadow: 0 0 40px #b7e4c7;
 }
+
+/* ========================================= */
+/* SOL */
+/* ========================================= */
+
+.sun{
+
+  position:absolute;
+
+  top:8%;
+
+  width:320px;
+  height:320px;
+
+  border-radius:50%;
+
+  background:
+  radial-gradient(
+    circle,
+    #ffe66d 0%,
+    #4f03ff 60%,
+    transparent 75%
+  );
+
+  /* Desenfoque */
+  filter:blur(2px);
+
+  /* Movimiento */
+  animation:float 6s ease-in-out infinite;
+}
