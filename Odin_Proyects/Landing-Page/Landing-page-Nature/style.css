@@ -364,3 +364,27 @@ h1 {
     /* Animacion */
     animation:fade 1.5s ease;
 }
+
+/* ========================================= */
+/* PARRAFO */
+/* ========================================= */
+
+p {
+
+    /* Ancho maximo */
+    max-width: 600px;
+
+    /* Tamaño texto */
+    font-size: 1.1rem;
+
+    /* Transparencia */
+    opacity: .85;
+
+    /* Altura lineas */
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+
+    animation: fade 2s ease;
+}
+
