@@ -388,3 +388,39 @@ p {
     animation: fade 2s ease;
 }
 
+/* ========================================= */
+/* BOTON GENERAL */
+/* ========================================= */
+
+button{
+
+    padding: 14px 34px;
+
+    border:none;
+
+    border-radius: 50px;
+
+    background: #95d5b2;
+
+    color: #081c15;
+
+    font-size: 1rem;
+
+    cursor:pointer;
+
+    transition: .3s;
+
+    /* Brillo */
+    box-shadow: 0 0 25px #95d5b266;
+}
+
+/* Hover */
+
+button:hover {
+
+    /* Movimiento */
+    transform: translateY(-3px) scale(1.05);
+
+    /* Brillo */
+    box-shadow: 0 0 40px #b7e4c7;
+}
