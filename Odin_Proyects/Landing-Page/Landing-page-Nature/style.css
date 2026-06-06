@@ -293,3 +293,42 @@ header {
     /* Eleva boton */
     transform: translateY(-3px) scale(1.05);
 }
+
+
+/* ========================================= */
+/* HERO */
+/* Pantalla principal */
+/* ========================================= */
+
+.hero {
+
+    /* Permite absolute dentro */
+    position:relative;
+
+    /* Altura completa */
+    height:100vh;
+
+    /*Flexbox */
+    display: flex;
+
+    /* Centra horizontal */
+    justify-content:center;
+
+    /* Centra verticalmente */
+    align-items:center;
+
+    /* Centra texto */ 
+    text-align:center;
+
+    /* Oculta desbordes */
+    overflow:hidden;
+
+    /* Fondo degradado */
+    background: 
+    linear-gradient(
+        to bottom, 
+        #081c15 0%,
+        #1b4332 40%,
+        #2d6a4f 100%
+    );
+}
