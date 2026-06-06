@@ -332,3 +332,17 @@ header {
         #2d6a4f 100%
     );
 }
+
+/* ========================================= */
+/* CONTENIDO */
+/* ========================================= */
+
+.content {
+    
+    position:relative;
+
+    /* Prioridad visual */
+    z-index: 10;
+
+    padding: 20px;
+}
