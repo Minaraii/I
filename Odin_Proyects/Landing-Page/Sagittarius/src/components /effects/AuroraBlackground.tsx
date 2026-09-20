@@ -26,7 +26,13 @@ export function AuroraBackground() {
             }}  />
 
             {/* Orb 4 - accent */ }
+            <div className="absolute top-[40%] left-[10%] w-125 h-125 rounded-full opacity-15" style={{
+                background: 'radial-gradient(circle, rgba(99,102,241,0.8) 0%, rgba(99,102,241,0.2) 50%, transparent 70%',
+                filter: 'blur(90px)',
+                animation: 'aurora-1 26s ease-in-out infinite reverse',
+                willChange: 'transform',
+            }} />
 
         </div>
-    )
+    );
 }
