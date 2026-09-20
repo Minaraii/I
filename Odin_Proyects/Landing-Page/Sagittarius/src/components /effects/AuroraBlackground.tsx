@@ -18,6 +18,14 @@ export function AuroraBackground() {
             }} />
 
             {/* Orb 3 - purple */}
+            <div className="absolute bottom-[-10%] left-[30%] w-200 h-200 rounded-full opacity-20" style={{
+                background: 'radial-gradient(circle, rgba(99,102,241,0.8) 0%, rgba(99,102,241,0.2) 50%, transparent 70%',
+                filter: 'blur(120px)',
+                animation: 'aurora-3 22s ease-in-out infinite',
+                willChange: 'transform',
+            }}  />
+
+            {/* Orb 4 - accent */ }
 
         </div>
     )
