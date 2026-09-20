@@ -1,4 +1,4 @@
- export function AuroraBackground(){
+export function AuroraBackground() {
     return (
         <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block" aria-hidden="true">
             {/* Orb 1 - Violet */}
@@ -9,7 +9,16 @@
                 willChange: 'transform',
             }} />
 
+            {/* Orb 2 - indigo */}
+            <div className="absolute top-[10%] right-[-5%] w-150 h-150 rounded-full opacity-25" style={{
+                background: 'radial-gradient(circle, rgba(99,102,241,0.8) 0%, rgba(99,102,241,0.2) 50%, transparent 70%',
+                filter: 'blur(100px)',
+                animation: 'aurora-2 18s ease-in-out infinite',
+                willChange: 'transform',
+            }} />
+
+            {/* Orb 3 - purple */}
 
         </div>
     )
- }
+}
